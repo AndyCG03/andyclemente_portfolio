@@ -1,275 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andy Clemente — Developer & AI Engineer</title>
-  <meta name="description" content="Portfolio of Andy Clemente Gago — Mobile Developer & AI Engineer specializing in Flutter, FastAPI, and RAG architectures." />
-  <meta property="og:title" content="Andy Clemente — Developer & AI Engineer" />
-  <meta property="og:description" content="Mobile apps, RAG systems, ICPC competitor. Building the future from Havana." />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Portfolio de Andy Clemente Gago — Desarrollador móvil e Ingeniero de IA. Flutter, FastAPI, RAG, ICPC." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
-
-  <!-- Background -->
   <div class="grid-bg"></div>
 
-  <!-- Mobile Nav -->
-  <nav class="mobile-nav">
+  <div class="mobile-nav">
+    <a href="#projects">Proyectos</a>
     <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#cta">Contact</a>
-  </nav>
+    <a href="#experience">Experiencia</a>
+    <a href="#contact">Contacto</a>
+  </div>
 
-  <!-- Navigation -->
   <nav>
-    <div class="nav-logo">
-      <span>~/</span>andy_clemente<span>.dev</span>
-    </div>
+    <div class="nav-logo"><span class="g">~/</span>andy_clemente</div>
     <ul class="nav-links">
-      <li><a href="#skills"     data-text="Skills">Skills</a></li>
-      <li><a href="#projects"   data-text="Projects">Projects</a></li>
-      <li><a href="#experience" data-text="Experience">Experience</a></li>
-      <li><a href="#hackathons" data-text="Competitions">Competitions</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experiencia</a></li>
     </ul>
-    <a href="mailto:andyclmentegago@gmail.com" class="nav-cta">hire_me()</a>
+    <a href="mailto:andyclmentegago@gmail.com" class="nav-cta">Contactar</a>
     <button class="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- ═══════════════ HERO ═══════════════ -->
+  <!-- HERO -->
   <section id="hero">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-badge">AVAILABLE FOR OPPORTUNITIES</div>
-        <h1 class="hero-name">
-          Andy<br /><em>Clemente.</em>
-        </h1>
-        <p class="hero-title">
-          <span class="keyword">const</span>
-          <span class="fn"> role</span> =
-          <span class="string">"Mobile Dev &amp; AI Engineer"</span>;
+        <div class="badge"><span class="dot-pulse"></span>DISPONIBLE PARA OPORTUNIDADES</div>
+        <h1>Andy<br /><em>Clemente.</em></h1>
+        <p class="hero-role">
+          <span class="kw">const</span> role = <span class="str">"Mobile Dev &amp; AI Engineer"</span>;
         </p>
         <p class="hero-desc">
-          Developer specialized in mobile applications and artificial intelligence.
-          Building RAG architectures, Flutter apps, and competing in international
-          programming contests from Havana, Cuba.
+          Estudiante de 4to año de Ingeniería Informática en CUJAE.
+          Construyo apps móviles con Flutter, sistemas RAG con FastAPI
+          y compito en la ICPC desde La Habana, Cuba.
         </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">view_projects()</a>
-          <a href="#cta" class="btn-secondary">get_in_touch()</a>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-g">Ver proyectos</a>
+          <a href="#contact"  class="btn-o">Contáctame</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-n">3×</span>
+            <span class="stat-l">ICPC Caribbean Finals</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <span class="stat-n">#37</span>
+            <span class="stat-l">Mejor rank Caribe</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <span class="stat-n">2026</span>
+            <span class="stat-l">Graduación CUJAE</span>
+          </div>
         </div>
       </div>
 
-      <!-- Terminal -->
       <div class="terminal">
-        <div class="terminal-bar">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-y"></span>
-          <span class="dot dot-g"></span>
-          <span class="terminal-title">andy@portfolio ~ zsh</span>
+        <div class="term-bar">
+          <span class="dot dr"></span>
+          <span class="dot dy"></span>
+          <span class="dot dg"></span>
+          <span class="term-title">andy@portfolio ~ zsh</span>
         </div>
-        <div class="terminal-body" id="terminal-body"></div>
+        <div class="term-body" id="term-body"></div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ SKILLS ═══════════════ -->
-  <section id="skills">
-    <div class="section-inner">
-      <p class="section-label reveal">// TECH STACK</p>
-      <h2 class="section-title reveal">Core <em>Skills</em></h2>
-      <div class="divider reveal"></div>
-
-      <div class="skills-grid">
-
-        <div class="skill-card reveal">
-          <span class="skill-icon">📱</span>
-          <div class="skill-name">Mobile Development</div>
-          <p class="dim" style="font-size:0.8rem">Cross-platform apps with Flutter & Dart. State management, REST integrations, GPS & media.</p>
-          <div class="skill-tags">
-            <span class="tag accent">Flutter</span>
-            <span class="tag accent">Dart</span>
-            <span class="tag">Provider</span>
-            <span class="tag">REST APIs</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal">
-          <span class="skill-icon">🤖</span>
-          <div class="skill-name">AI & RAG Systems</div>
-          <p class="dim" style="font-size:0.8rem">Building intelligent virtual assistants using Retrieval-Augmented Generation and multiple LLMs.</p>
-          <div class="skill-tags">
-            <span class="tag purple">RAG</span>
-            <span class="tag purple">LLMs</span>
-            <span class="tag">ChromaDB</span>
-            <span class="tag">Whisper</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal">
-          <span class="skill-icon">⚡</span>
-          <div class="skill-name">Backend / APIs</div>
-          <p class="dim" style="font-size:0.8rem">FastAPI Python APIs with JWT auth, CRUD, document processing, embeddings, and semantic search.</p>
-          <div class="skill-tags">
-            <span class="tag accent">FastAPI</span>
-            <span class="tag accent">Python</span>
-            <span class="tag">JWT</span>
-            <span class="tag">ChromaDB</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal">
-          <span class="skill-icon">🏆</span>
-          <div class="skill-name">Competitive Programming</div>
-          <p class="dim" style="font-size:0.8rem">ICPC Caribbean Finals x3, best rank #37 in the Caribbean. Algorithms & data structures in C++/Java.</p>
-          <div class="skill-tags">
-            <span class="tag">C</span>
-            <span class="tag">Java</span>
-            <span class="tag">Algorithms</span>
-            <span class="tag">ICPC</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal">
-          <span class="skill-icon">📡</span>
-          <div class="skill-name">Document Processing</div>
-          <p class="dim" style="font-size:0.8rem">PDF/DOCX ingestion pipelines with chunking, embedding generation, and vector storage.</p>
-          <div class="skill-tags">
-            <span class="tag purple">PDF/DOCX</span>
-            <span class="tag purple">Embeddings</span>
-            <span class="tag">Chunking</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal">
-          <span class="skill-icon">🎯</span>
-          <div class="skill-name">Leadership & Research</div>
-          <p class="dim" style="font-size:0.8rem">Teaching assistant at CUJAE, published researcher in RENIA journal, Faculty Secretariat VP.</p>
-          <div class="skill-tags">
-            <span class="tag">Teaching</span>
-            <span class="tag">Research</span>
-            <span class="tag">Spanish</span>
-            <span class="tag">English A2</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-inner">
-      <p class="section-label reveal">// FEATURED WORK</p>
-      <h2 class="section-title reveal">Latest <em>Projects</em></h2>
-      <div class="divider reveal"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-label">// PROYECTOS</p>
+        <h2 class="sec-title">Mis <em>Repositorios</em></h2>
+      </div>
+      <div class="proj-grid">
 
-      <div class="projects-grid">
-
-        <!-- Project 1 -->
-        <div class="project-card reveal">
-          <div class="project-line-numbers">
-            <span>01</span><span>02</span><span>03</span>
-            <span>04</span><span>05</span><span>06</span>
-            <span>07</span><span>08</span><span>09</span>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang py"></span><span class="proj-lang-name">Python</span>
+            <span class="proj-license">GPL-3.0</span>
           </div>
-          <div class="featured-badge">★ FEATURED</div>
-          <div class="project-body">
-            <p class="project-type">// AI PLATFORM</p>
-            <h3 class="project-title">RAG Virtual Assistants Platform</h3>
-            <p class="project-desc">
-              Unified platform to manage multiple AI virtual assistants using a
-              Retrieval-Augmented Generation approach. Includes JWT auth, user CRUD,
-              document processing (PDF/DOCX), ChromaDB semantic search, LLM routing,
-              and Whisper audio processing.
-            </p>
-            <div class="project-stack">
-              <span class="tag accent">FastAPI</span>
-              <span class="tag accent">Python</span>
-              <span class="tag purple">RAG</span>
-              <span class="tag purple">ChromaDB</span>
-              <span class="tag">Whisper</span>
-              <span class="tag">JWT</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/AndyCG03" target="_blank" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                GitHub →
-              </a>
-              <span class="dim" style="font-size:0.7rem">BioCubaFarma ETI · 2025</span>
-            </div>
+          <h3 class="proj-name">ai-api-service</h3>
+          <p class="proj-desc">API REST con FastAPI para servicios de IA locales: generación de texto, transcripción de audio, embeddings y OCR. Optimizado para bajos recursos.</p>
+          <div class="proj-tags">
+            <span class="tag g">FastAPI</span><span class="tag">RAG</span>
+            <span class="tag">Whisper</span><span class="tag">OCR</span>
           </div>
+          <a href="https://github.com/AndyCG03/ai-api-service" target="_blank" class="proj-link">
+            Ver en GitHub <svg viewBox="0 0 16 16" fill="currentColor" width="14"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
         </div>
 
-        <!-- Project 2 -->
-        <div class="project-card reveal">
-          <div class="project-line-numbers">
-            <span>01</span><span>02</span><span>03</span>
-            <span>04</span><span>05</span><span>06</span>
-            <span>07</span><span>08</span>
+        <div class="proj-card reveal featured">
+          <div class="proj-top">
+            <span class="proj-lang py"></span><span class="proj-lang-name">Python</span>
+            <span class="feat-badge">★ Destacado</span>
           </div>
-          <div class="project-body">
-            <p class="project-type">// FLUTTER APP</p>
-            <h3 class="project-title">El Chismoso</h3>
-            <p class="project-desc">
-              Mobile application built with Flutter that allows users to capture photos,
-              enrich them with GPS metadata and descriptions, then upload to a backend
-              platform for geospatial processing.
-            </p>
-            <div class="project-stack">
-              <span class="tag accent">Flutter</span>
-              <span class="tag accent">Dart</span>
-              <span class="tag">GPS</span>
-              <span class="tag">Provider</span>
-              <span class="tag">REST API</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/AndyCG03" target="_blank" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                GitHub →
-              </a>
-              <span class="dim" style="font-size:0.7rem">Medialytic · 2024–2025</span>
-            </div>
+          <h3 class="proj-name">backend-smart-task</h3>
+          <p class="proj-desc">Backend para una solución de gestión de tickets para programadores con IA integrada. Arquitectura orientada a equipos de desarrollo.</p>
+          <div class="proj-tags">
+            <span class="tag g">Python</span><span class="tag g">IA</span>
+            <span class="tag">Tickets</span><span class="tag">Backend</span>
           </div>
+          <a href="https://github.com/AndyCG03/backend-smart-task" target="_blank" class="proj-link">
+            Ver en GitHub <svg viewBox="0 0 16 16" fill="currentColor" width="14"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
         </div>
 
-        <!-- Project 3 -->
-        <div class="project-card reveal">
-          <div class="project-line-numbers">
-            <span>01</span><span>02</span><span>03</span>
-            <span>04</span><span>05</span><span>06</span>
-            <span>07</span>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang dart"></span><span class="proj-lang-name">Dart / Flutter</span>
           </div>
-          <div class="project-body">
-            <p class="project-type">// RESEARCH + IOT</p>
-            <h3 class="project-title">Intelligent Cultivation House</h3>
-            <p class="project-desc">
-              Smart greenhouse prototype integrating sensors, automation, and
-              AI-driven decision-making for optimal cultivation conditions. Published
-              in RENIA — National Student Journal of Engineering and Architecture.
-            </p>
-            <div class="project-stack">
-              <span class="tag purple">IoT</span>
-              <span class="tag purple">AI</span>
-              <span class="tag">Automation</span>
-              <span class="tag">Research</span>
-            </div>
-            <div class="project-links">
-              <span class="project-link" style="cursor:default;color:var(--cyan)">
-                📄 Published in RENIA
-              </span>
-            </div>
+          <h3 class="proj-name">biocu</h3>
+          <p class="proj-desc">Plataforma en Flutter + NestJS para reportar problemas medioambientales. App móvil con sistema de reportes ciudadanos y backend integrado.</p>
+          <div class="proj-tags">
+            <span class="tag b">Flutter</span><span class="tag b">Dart</span>
+            <span class="tag">NestJS</span><span class="tag">Medio Ambiente</span>
+          </div>
+          <a href="https://github.com/AndyCG03/biocu" target="_blank" class="proj-link">
+            Ver en GitHub <svg viewBox="0 0 16 16" fill="currentColor" width="14"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang html"></span><span class="proj-lang-name">HTML / JS</span>
+          </div>
+          <h3 class="proj-name">al_toque_app</h3>
+          <p class="proj-desc">App para consultar tasas de cambio en Cuba en tiempo real. Convierte entre monedas del mercado informal de forma rápida.</p>
+          <div class="proj-tags">
+            <span class="tag o">HTML</span><span class="tag">JavaScript</span>
+            <span class="tag">Cuba</span><span class="tag">Finanzas</span>
+          </div>
+          <a href="https://github.com/AndyCG03/al_toque_app" target="_blank" class="proj-link">
+            Ver en GitHub <svg viewBox="0 0 16 16" fill="currentColor" width="14"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <span class="proj-lang sh"></span><span class="proj-lang-name">Shell</span>
+          </div>
+          <h3 class="proj-name">VidCrush Pro</h3>
+          <p class="proj-desc">Compresor de video profesional vía terminal con FFmpeg. Modo Carpeta Mágica: arrastra una carpeta y procesa videos automáticamente. Crea GIFs optimizados.</p>
+          <div class="proj-tags">
+            <span class="tag">Shell</span><span class="tag">FFmpeg</span>
+            <span class="tag">CLI</span><span class="tag">Video</span>
+          </div>
+          <a href="https://github.com/AndyCG03/VidCrush---Video-Compresor" target="_blank" class="proj-link">
+            Ver en GitHub <svg viewBox="0 0 16 16" fill="currentColor" width="14"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+        </div>
+
+        <div class="proj-card proj-all reveal">
+          <div class="proj-all-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <p>Ver todos los proyectos</p>
+            <a href="https://github.com/AndyCG03?tab=repositories" target="_blank" class="btn-g">github.com/AndyCG03</a>
           </div>
         </div>
 
@@ -277,56 +184,129 @@
     </div>
   </section>
 
-  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-label">// TECNOLOGÍAS</p>
+        <h2 class="sec-title">Stack <em>técnico</em></h2>
+      </div>
+      <div class="skills-grid">
+        <div class="sk-block reveal">
+          <p class="sk-cat">📱 Mobile</p>
+          <div class="sk-tags">
+            <span class="tag g">Flutter</span><span class="tag g">Dart</span>
+            <span class="tag">Provider</span><span class="tag">Android Studio</span>
+          </div>
+        </div>
+        <div class="sk-block reveal">
+          <p class="sk-cat">🤖 IA & Backend</p>
+          <div class="sk-tags">
+            <span class="tag p">FastAPI</span><span class="tag p">Python</span>
+            <span class="tag p">RAG</span><span class="tag">NestJS</span><span class="tag">Whisper</span>
+          </div>
+        </div>
+        <div class="sk-block reveal">
+          <p class="sk-cat">💻 Lenguajes</p>
+          <div class="sk-tags">
+            <span class="tag">Java</span><span class="tag">C</span>
+            <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Vue.js</span>
+          </div>
+        </div>
+        <div class="sk-block reveal">
+          <p class="sk-cat">🗄️ Bases de datos</p>
+          <div class="sk-tags">
+            <span class="tag">PostgreSQL</span><span class="tag">MySQL</span>
+            <span class="tag">SQLite</span><span class="tag g">ChromaDB</span>
+          </div>
+        </div>
+        <div class="sk-block reveal">
+          <p class="sk-cat">🛠️ Herramientas</p>
+          <div class="sk-tags">
+            <span class="tag">Git</span><span class="tag">GitHub</span>
+            <span class="tag">VS Code</span><span class="tag">LaTeX</span>
+          </div>
+        </div>
+        <div class="sk-block reveal">
+          <p class="sk-cat">🎨 Diseño & Otros</p>
+          <div class="sk-tags">
+            <span class="tag">Canva</span><span class="tag">Adobe</span>
+            <span class="tag">WordPress</span><span class="tag">FFmpeg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="section-inner">
-      <p class="section-label reveal">// WORK HISTORY</p>
-      <h2 class="section-title reveal">Professional <em>Experience</em></h2>
-      <div class="divider reveal"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-label">// EXPERIENCIA</p>
+        <h2 class="sec-title">Trayectoria <em>profesional</em></h2>
+      </div>
+      <div class="timeline">
 
-      <div class="exp-timeline">
-
-        <div class="exp-item reveal">
-          <div class="exp-period">
-            <span class="exp-current">CURRENT</span><br />
-            Mar 2025<br />— Present
+        <div class="tl-item reveal">
+          <div class="tl-left">
+            <span class="tl-badge">ACTUAL</span>
+            <span class="tl-date">Mar 2025 – Presente</span>
           </div>
-          <div>
-            <div class="exp-role">Programmer Technician</div>
-            <div class="exp-company">BioCubaFarma Information Technology Company (ETI) · Havana, Cuba</div>
-            <ul class="exp-bullets">
-              <li>Leading development of a unified platform for multiple AI virtual assistants using RAG architecture and various LLMs.</li>
-              <li>Built a full FastAPI (Python) API with JWT authentication, user management, document processing pipeline (PDF/DOCX), ChromaDB vector storage, and audio processing via Whisper.</li>
-              <li>Participated as delegate at SIGESTIC 2025, a national-level research and commercial technology conference.</li>
+          <div class="tl-dot"></div>
+          <div class="tl-right">
+            <h3 class="tl-role">Programador Técnico</h3>
+            <p class="tl-co">BioCubaFarma (ETI) · La Habana</p>
+            <ul class="tl-list">
+              <li>Lidera plataforma unificada para múltiples asistentes virtuales con arquitectura RAG.</li>
+              <li>API FastAPI con JWT, ChromaDB, procesamiento PDF/DOCX y Whisper.</li>
+              <li>Delegado en SIGESTIC 2025.</li>
             </ul>
           </div>
         </div>
 
-        <div class="exp-item reveal">
-          <div class="exp-period">
-            Nov 2024<br />— Jun 2025
+        <div class="tl-item reveal">
+          <div class="tl-left">
+            <span class="tl-date">Nov 2024 – Jun 2025</span>
           </div>
-          <div>
-            <div class="exp-role">Mobile Programmer</div>
-            <div class="exp-company">Medialytic · Havana, Cuba</div>
-            <ul class="exp-bullets">
-              <li>Completed intensive Flutter training covering Dart, state management with Provider, Widgets, and REST API integrations.</li>
-              <li>Developed "El Chismoso" — a Flutter app for capturing, enriching, and uploading geotagged photos to a processing platform.</li>
+          <div class="tl-dot"></div>
+          <div class="tl-right">
+            <h3 class="tl-role">Programador Móvil</h3>
+            <p class="tl-co">Medialytic · La Habana</p>
+            <ul class="tl-list">
+              <li>Capacitación intensiva en Flutter: Dart, Provider y REST APIs.</li>
+              <li>Desarrolló "El Chismoso" — app Flutter con GPS y subida de fotos.</li>
             </ul>
           </div>
         </div>
 
-        <div class="exp-item reveal">
-          <div class="exp-period">
-            <span class="exp-current">CURRENT</span><br />
-            Mar 2025<br />— Present
+        <div class="tl-item reveal">
+          <div class="tl-left">
+            <span class="tl-badge">ACTUAL</span>
+            <span class="tl-date">Mar 2025 – Presente</span>
           </div>
-          <div>
-            <div class="exp-role">Teaching Assistant</div>
-            <div class="exp-company">CUJAE — Technological University of Havana · Havana, Cuba</div>
-            <ul class="exp-bullets">
-              <li>Instructor for Introduction to Programming (C language) for first-semester Computer Engineering students.</li>
-              <li>Instructor for Object-Oriented Design and Programming (Java) for second-semester Computer Engineering students.</li>
+          <div class="tl-dot"></div>
+          <div class="tl-right">
+            <h3 class="tl-role">Asistente Técnico en Docencia</h3>
+            <p class="tl-co">CUJAE · La Habana</p>
+            <ul class="tl-list">
+              <li>Instructor de IP (C) para 1er semestre de Ing. Informática.</li>
+              <li>Instructor de DPOO (Java) para 2do semestre.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-left">
+            <span class="tl-date">Feb 2023 – 2026</span>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-right">
+            <h3 class="tl-role">Ingeniería Informática</h3>
+            <p class="tl-co">CUJAE — Graduación prevista: Julio 2026</p>
+            <ul class="tl-list">
+              <li>3× ICPC Caribbean Finals · Mejor ranking: #37 en el Caribe.</li>
+              <li>Publicación en RENIA: "Prototipo de Casa de Cultivo Inteligente".</li>
+              <li>UNESCO 2024 & 2025 · AVANCODE 2025 · Global Game Jam 2025.</li>
             </ul>
           </div>
         </div>
@@ -335,103 +315,43 @@
     </div>
   </section>
 
-  <!-- ═══════════════ COMPETITIONS ═══════════════ -->
-  <section id="hackathons">
-    <div class="section-inner">
-      <p class="section-label reveal">// COMPETITIONS & AWARDS</p>
-      <h2 class="section-title reveal">Hackathons &amp; <em>Contests</em></h2>
-      <div class="divider reveal"></div>
-
-      <div class="hack-grid">
-
-        <div class="hack-card reveal">
-          <span class="hack-emoji">🌍</span>
-          <div class="hack-name">UNESCO Youth Hackathon</div>
-          <div class="hack-year">2024 · 2025</div>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <div class="cta-orb"></div>
+        <p class="sec-label">// CONTACTO</p>
+        <h2 class="cta-title">¿Trabajamos<br /><em>juntos?</em></h2>
+        <p class="cta-desc">Abierto a colaboraciones, proyectos freelance y oportunidades remotas en desarrollo móvil e IA.</p>
+        <div class="cta-btns">
+          <a href="mailto:andyclmentegago@gmail.com" class="btn-g">andyclmentegago@gmail.com</a>
         </div>
-
-        <div class="hack-card reveal">
-          <span class="hack-emoji">💻</span>
-          <div class="hack-name">AVANCODE</div>
-          <div class="hack-year">2025</div>
+        <div class="social-row">
+          <a href="https://github.com/AndyCG03"           target="_blank" class="soc-link" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/andy-clemente"  target="_blank" class="soc-link" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://instagram.com/clemen_lens"      target="_blank" class="soc-link" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://x.com/AndyClemente6"            target="_blank" class="soc-link" title="X / Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
-
-        <div class="hack-card reveal">
-          <span class="hack-emoji">🎮</span>
-          <div class="hack-name">Global Game Jam</div>
-          <div class="hack-year">2025</div>
-        </div>
-
-        <div class="hack-card reveal">
-          <span class="hack-emoji">🏆</span>
-          <div class="hack-name">ICPC Caribbean</div>
-          <div class="hack-year">3× Finals · Best: Rank #37</div>
-        </div>
-
-        <div class="hack-card reveal">
-          <span class="hack-emoji">📄</span>
-          <div class="hack-name">RENIA Publication</div>
-          <div class="hack-year">National Eng. Journal</div>
-        </div>
-
-        <div class="hack-card reveal">
-          <span class="hack-emoji">🎓</span>
-          <div class="hack-name">SIGESTIC 2025</div>
-          <div class="hack-year">Delegate · ETI</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ CTA ═══════════════ -->
-  <section id="cta">
-    <div class="section-inner cta-inner">
-      <p class="cta-eyebrow reveal">// LET'S BUILD SOMETHING</p>
-      <h2 class="cta-title reveal">
-        Ready to<br /><em>collaborate?</em>
-      </h2>
-      <p class="cta-sub reveal">
-        I'm open to freelance projects, remote positions, and exciting challenges
-        in mobile development and AI engineering. Let's ship something great.
-      </p>
-      <div class="cta-buttons reveal">
-        <a href="mailto:andyclmentegago@gmail.com" class="btn-large green">
-          send_email()
-        </a>
-        <a href="https://www.linkedin.com/in/andy-clemente" target="_blank" class="btn-large outline">
-          linkedin_profile()
-        </a>
-      </div>
-
-      <div class="contact-links reveal">
-        <a href="https://github.com/AndyCG03" target="_blank" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          github.com/AndyCG03
-        </a>
-        <a href="https://www.linkedin.com/in/andy-clemente" target="_blank" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          linkedin.com/in/andy-clemente
-        </a>
-        <a href="tel:+5355847601" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.25 5.25l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 14l.19 2.92z"/></svg>
+        <p class="cta-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 1.27h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.83a16 16 0 005.25 5.25l1.62-1.62a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.73 14l.19 2.92z"/></svg>
           +53 55847601
-        </a>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer>
-    <div>
-      <span class="logo">andy_clemente</span>
-      <span class="dim"> // Computer Engineering · CUJAE · Expected 2026</span>
-    </div>
-    <div class="footer-right">
-      <a href="https://github.com/AndyCG03" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/andy-clemente" target="_blank">LinkedIn</a>
-      <a href="mailto:andyclmentegago@gmail.com">Email</a>
-    </div>
+    <span class="g">andy_clemente</span>
+    <span class="dim">© 2025 · La Habana, Cuba · CUJAE 2026</span>
+    <a href="https://github.com/AndyCG03" target="_blank" class="dim foot-gh">GitHub →</a>
   </footer>
 
   <script src="js/main.js"></script>
