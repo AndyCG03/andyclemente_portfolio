@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andy Clemente — Developer & AI Engineer</title>
+  <meta name="description" content="Portfolio of Andy Clemente Gago — Mobile Developer & AI Engineer specializing in Flutter, FastAPI, and RAG architectures." />
+  <meta property="og:title" content="Andy Clemente — Developer & AI Engineer" />
+  <meta property="og:description" content="Mobile apps, RAG systems, ICPC competitor. Building the future from Havana." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Background -->
+  <div class="grid-bg"></div>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#cta">Contact</a>
+  </nav>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">
+      <span>~/</span>andy_clemente<span>.dev</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#skills"     data-text="Skills">Skills</a></li>
+      <li><a href="#projects"   data-text="Projects">Projects</a></li>
+      <li><a href="#experience" data-text="Experience">Experience</a></li>
+      <li><a href="#hackathons" data-text="Competitions">Competitions</a></li>
+    </ul>
+    <a href="mailto:andyclmentegago@gmail.com" class="nav-cta">hire_me()</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section id="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">AVAILABLE FOR OPPORTUNITIES</div>
+        <h1 class="hero-name">
+          Andy<br /><em>Clemente.</em>
+        </h1>
+        <p class="hero-title">
+          <span class="keyword">const</span>
+          <span class="fn"> role</span> =
+          <span class="string">"Mobile Dev &amp; AI Engineer"</span>;
+        </p>
+        <p class="hero-desc">
+          Developer specialized in mobile applications and artificial intelligence.
+          Building RAG architectures, Flutter apps, and competing in international
+          programming contests from Havana, Cuba.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">view_projects()</a>
+          <a href="#cta" class="btn-secondary">get_in_touch()</a>
+        </div>
+      </div>
+
+      <!-- Terminal -->
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="terminal-title">andy@portfolio ~ zsh</span>
+        </div>
+        <div class="terminal-body" id="terminal-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label reveal">// TECH STACK</p>
+      <h2 class="section-title reveal">Core <em>Skills</em></h2>
+      <div class="divider reveal"></div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card reveal">
+          <span class="skill-icon">📱</span>
+          <div class="skill-name">Mobile Development</div>
+          <p class="dim" style="font-size:0.8rem">Cross-platform apps with Flutter & Dart. State management, REST integrations, GPS & media.</p>
+          <div class="skill-tags">
+            <span class="tag accent">Flutter</span>
+            <span class="tag accent">Dart</span>
+            <span class="tag">Provider</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <span class="skill-icon">🤖</span>
+          <div class="skill-name">AI & RAG Systems</div>
+          <p class="dim" style="font-size:0.8rem">Building intelligent virtual assistants using Retrieval-Augmented Generation and multiple LLMs.</p>
+          <div class="skill-tags">
+            <span class="tag purple">RAG</span>
+            <span class="tag purple">LLMs</span>
+            <span class="tag">ChromaDB</span>
+            <span class="tag">Whisper</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <span class="skill-icon">⚡</span>
+          <div class="skill-name">Backend / APIs</div>
+          <p class="dim" style="font-size:0.8rem">FastAPI Python APIs with JWT auth, CRUD, document processing, embeddings, and semantic search.</p>
+          <div class="skill-tags">
+            <span class="tag accent">FastAPI</span>
+            <span class="tag accent">Python</span>
+            <span class="tag">JWT</span>
+            <span class="tag">ChromaDB</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <span class="skill-icon">🏆</span>
+          <div class="skill-name">Competitive Programming</div>
+          <p class="dim" style="font-size:0.8rem">ICPC Caribbean Finals x3, best rank #37 in the Caribbean. Algorithms & data structures in C++/Java.</p>
+          <div class="skill-tags">
+            <span class="tag">C</span>
+            <span class="tag">Java</span>
+            <span class="tag">Algorithms</span>
+            <span class="tag">ICPC</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <span class="skill-icon">📡</span>
+          <div class="skill-name">Document Processing</div>
+          <p class="dim" style="font-size:0.8rem">PDF/DOCX ingestion pipelines with chunking, embedding generation, and vector storage.</p>
+          <div class="skill-tags">
+            <span class="tag purple">PDF/DOCX</span>
+            <span class="tag purple">Embeddings</span>
+            <span class="tag">Chunking</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <span class="skill-icon">🎯</span>
+          <div class="skill-name">Leadership & Research</div>
+          <p class="dim" style="font-size:0.8rem">Teaching assistant at CUJAE, published researcher in RENIA journal, Faculty Secretariat VP.</p>
+          <div class="skill-tags">
+            <span class="tag">Teaching</span>
+            <span class="tag">Research</span>
+            <span class="tag">Spanish</span>
+            <span class="tag">English A2</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label reveal">// FEATURED WORK</p>
+      <h2 class="section-title reveal">Latest <em>Projects</em></h2>
+      <div class="divider reveal"></div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card reveal">
+          <div class="project-line-numbers">
+            <span>01</span><span>02</span><span>03</span>
+            <span>04</span><span>05</span><span>06</span>
+            <span>07</span><span>08</span><span>09</span>
+          </div>
+          <div class="featured-badge">★ FEATURED</div>
+          <div class="project-body">
+            <p class="project-type">// AI PLATFORM</p>
+            <h3 class="project-title">RAG Virtual Assistants Platform</h3>
+            <p class="project-desc">
+              Unified platform to manage multiple AI virtual assistants using a
+              Retrieval-Augmented Generation approach. Includes JWT auth, user CRUD,
+              document processing (PDF/DOCX), ChromaDB semantic search, LLM routing,
+              and Whisper audio processing.
+            </p>
+            <div class="project-stack">
+              <span class="tag accent">FastAPI</span>
+              <span class="tag accent">Python</span>
+              <span class="tag purple">RAG</span>
+              <span class="tag purple">ChromaDB</span>
+              <span class="tag">Whisper</span>
+              <span class="tag">JWT</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/AndyCG03" target="_blank" class="project-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub →
+              </a>
+              <span class="dim" style="font-size:0.7rem">BioCubaFarma ETI · 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal">
+          <div class="project-line-numbers">
+            <span>01</span><span>02</span><span>03</span>
+            <span>04</span><span>05</span><span>06</span>
+            <span>07</span><span>08</span>
+          </div>
+          <div class="project-body">
+            <p class="project-type">// FLUTTER APP</p>
+            <h3 class="project-title">El Chismoso</h3>
+            <p class="project-desc">
+              Mobile application built with Flutter that allows users to capture photos,
+              enrich them with GPS metadata and descriptions, then upload to a backend
+              platform for geospatial processing.
+            </p>
+            <div class="project-stack">
+              <span class="tag accent">Flutter</span>
+              <span class="tag accent">Dart</span>
+              <span class="tag">GPS</span>
+              <span class="tag">Provider</span>
+              <span class="tag">REST API</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/AndyCG03" target="_blank" class="project-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub →
+              </a>
+              <span class="dim" style="font-size:0.7rem">Medialytic · 2024–2025</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card reveal">
+          <div class="project-line-numbers">
+            <span>01</span><span>02</span><span>03</span>
+            <span>04</span><span>05</span><span>06</span>
+            <span>07</span>
+          </div>
+          <div class="project-body">
+            <p class="project-type">// RESEARCH + IOT</p>
+            <h3 class="project-title">Intelligent Cultivation House</h3>
+            <p class="project-desc">
+              Smart greenhouse prototype integrating sensors, automation, and
+              AI-driven decision-making for optimal cultivation conditions. Published
+              in RENIA — National Student Journal of Engineering and Architecture.
+            </p>
+            <div class="project-stack">
+              <span class="tag purple">IoT</span>
+              <span class="tag purple">AI</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Research</span>
+            </div>
+            <div class="project-links">
+              <span class="project-link" style="cursor:default;color:var(--cyan)">
+                📄 Published in RENIA
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label reveal">// WORK HISTORY</p>
+      <h2 class="section-title reveal">Professional <em>Experience</em></h2>
+      <div class="divider reveal"></div>
+
+      <div class="exp-timeline">
+
+        <div class="exp-item reveal">
+          <div class="exp-period">
+            <span class="exp-current">CURRENT</span><br />
+            Mar 2025<br />— Present
+          </div>
+          <div>
+            <div class="exp-role">Programmer Technician</div>
+            <div class="exp-company">BioCubaFarma Information Technology Company (ETI) · Havana, Cuba</div>
+            <ul class="exp-bullets">
+              <li>Leading development of a unified platform for multiple AI virtual assistants using RAG architecture and various LLMs.</li>
+              <li>Built a full FastAPI (Python) API with JWT authentication, user management, document processing pipeline (PDF/DOCX), ChromaDB vector storage, and audio processing via Whisper.</li>
+              <li>Participated as delegate at SIGESTIC 2025, a national-level research and commercial technology conference.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-period">
+            Nov 2024<br />— Jun 2025
+          </div>
+          <div>
+            <div class="exp-role">Mobile Programmer</div>
+            <div class="exp-company">Medialytic · Havana, Cuba</div>
+            <ul class="exp-bullets">
+              <li>Completed intensive Flutter training covering Dart, state management with Provider, Widgets, and REST API integrations.</li>
+              <li>Developed "El Chismoso" — a Flutter app for capturing, enriching, and uploading geotagged photos to a processing platform.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-period">
+            <span class="exp-current">CURRENT</span><br />
+            Mar 2025<br />— Present
+          </div>
+          <div>
+            <div class="exp-role">Teaching Assistant</div>
+            <div class="exp-company">CUJAE — Technological University of Havana · Havana, Cuba</div>
+            <ul class="exp-bullets">
+              <li>Instructor for Introduction to Programming (C language) for first-semester Computer Engineering students.</li>
+              <li>Instructor for Object-Oriented Design and Programming (Java) for second-semester Computer Engineering students.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COMPETITIONS ═══════════════ -->
+  <section id="hackathons">
+    <div class="section-inner">
+      <p class="section-label reveal">// COMPETITIONS & AWARDS</p>
+      <h2 class="section-title reveal">Hackathons &amp; <em>Contests</em></h2>
+      <div class="divider reveal"></div>
+
+      <div class="hack-grid">
+
+        <div class="hack-card reveal">
+          <span class="hack-emoji">🌍</span>
+          <div class="hack-name">UNESCO Youth Hackathon</div>
+          <div class="hack-year">2024 · 2025</div>
+        </div>
+
+        <div class="hack-card reveal">
+          <span class="hack-emoji">💻</span>
+          <div class="hack-name">AVANCODE</div>
+          <div class="hack-year">2025</div>
+        </div>
+
+        <div class="hack-card reveal">
+          <span class="hack-emoji">🎮</span>
+          <div class="hack-name">Global Game Jam</div>
+          <div class="hack-year">2025</div>
+        </div>
+
+        <div class="hack-card reveal">
+          <span class="hack-emoji">🏆</span>
+          <div class="hack-name">ICPC Caribbean</div>
+          <div class="hack-year">3× Finals · Best: Rank #37</div>
+        </div>
+
+        <div class="hack-card reveal">
+          <span class="hack-emoji">📄</span>
+          <div class="hack-name">RENIA Publication</div>
+          <div class="hack-year">National Eng. Journal</div>
+        </div>
+
+        <div class="hack-card reveal">
+          <span class="hack-emoji">🎓</span>
+          <div class="hack-name">SIGESTIC 2025</div>
+          <div class="hack-year">Delegate · ETI</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section id="cta">
+    <div class="section-inner cta-inner">
+      <p class="cta-eyebrow reveal">// LET'S BUILD SOMETHING</p>
+      <h2 class="cta-title reveal">
+        Ready to<br /><em>collaborate?</em>
+      </h2>
+      <p class="cta-sub reveal">
+        I'm open to freelance projects, remote positions, and exciting challenges
+        in mobile development and AI engineering. Let's ship something great.
+      </p>
+      <div class="cta-buttons reveal">
+        <a href="mailto:andyclmentegago@gmail.com" class="btn-large green">
+          send_email()
+        </a>
+        <a href="https://www.linkedin.com/in/andy-clemente" target="_blank" class="btn-large outline">
+          linkedin_profile()
+        </a>
+      </div>
+
+      <div class="contact-links reveal">
+        <a href="https://github.com/AndyCG03" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          github.com/AndyCG03
+        </a>
+        <a href="https://www.linkedin.com/in/andy-clemente" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/andy-clemente
+        </a>
+        <a href="tel:+5355847601" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.25 5.25l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 14l.19 2.92z"/></svg>
+          +53 55847601
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div>
+      <span class="logo">andy_clemente</span>
+      <span class="dim"> // Computer Engineering · CUJAE · Expected 2026</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/AndyCG03" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/andy-clemente" target="_blank">LinkedIn</a>
+      <a href="mailto:andyclmentegago@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
