@@ -73,7 +73,7 @@ const translations: Record<Language, Translations> = {
       all: "View all repositories on GitHub",
     },
     skills: {
-      title: "Technical Stack",
+      title: "Stack",
     },
     experience: {
       title: "Work Experience",
@@ -121,7 +121,7 @@ const translations: Record<Language, Translations> = {
       all: "Ver todos los repositorios en GitHub",
     },
     skills: {
-      title: "Stack Técnico",
+      title: "Stack",
     },
     experience: {
       title: "Experiencia Laboral",
