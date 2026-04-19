@@ -2,10 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  distDir: "build",  // Cambia 'out' por 'build'
   images: {
     unoptimized: true,
   },
+  trailingSlash: true,
+  // Importante: desactiva características de servidor
+  distDir: "out",
 };
 
 export default nextConfig;
