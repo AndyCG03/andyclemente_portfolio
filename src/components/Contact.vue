@@ -27,7 +27,7 @@
             {{ t.contact.btn }}
           </a>
           <a
-            href="https://linkedin.com/in/andy-clemente"
+            href="https://www.linkedin.com/in/andy-clemente-gago-7590362a4?utm_source=share_via&utm_content=profile&utm_medium=member_android"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold text-[#4be277] ghost-border hover:bg-[#4be277]/10 transition-all"
