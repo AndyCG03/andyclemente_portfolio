@@ -22,8 +22,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} bg-background`}>
-      <body className="font-sans">
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} bg-[#0b1326]`}>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
+      <body className="font-sans bg-[#0b1326] text-[#dae2fd] selection:bg-[#4be277] selection:text-[#002109]">
         <LangProvider>{children}</LangProvider>
       </body>
     </html>
