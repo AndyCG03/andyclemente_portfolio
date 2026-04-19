@@ -44,7 +44,7 @@ const projects = [
   {
     num: "04",
     name: "biocu",
-    lang: "Dart / Flutter",
+    lang: "Flutter / Dart",
     desc: {
       en: "Flutter + NestJS platform to report environmental issues. Mobile app with citizen reporting system and integrated backend.",
       es: "Plataforma Flutter + NestJS para reportar problemas ambientales. App móvil con sistema de reportes ciudadanos y backend integrado.",
@@ -90,12 +90,17 @@ const langColors: Record<string, string> = {
 export default function Projects() {
   const { lang, t } = useLang();
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
+  const [headerVisible, setHeaderVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          // Animación del header
+          setHeaderVisible(true);
+          
+          // Animación de los proyectos
           projects.forEach((_, index) => {
             setTimeout(() => {
               setVisibleItems(prev => [...prev, index]);
@@ -125,7 +130,10 @@ export default function Projects() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center gap-6 mb-16">
+        {/* Header con fade */}
+        <div className={`flex items-center gap-6 mb-16 transition-all duration-700 ease-out transform ${
+          headerVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
           <span className="font-mono text-xs text-[#4be277] tracking-widest uppercase">
             02_PROJECTS
           </span>
@@ -135,6 +143,7 @@ export default function Projects() {
           </h2>
         </div>
 
+        {/* Grid de proyectos */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project, index) => (
             <div
@@ -201,14 +210,20 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        {/* Botón "Ver todos los proyectos" con fade */}
+        <div className={`mt-12 text-center transition-all duration-700 delay-500 ease-out transform ${
+          visibleItems.length === projects.length 
+            ? 'translate-y-0 opacity-100' 
+            : 'translate-y-8 opacity-0'
+        }`}>
           <a
             href="https://github.com/AndyCG03?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-sm text-[#4be277] hover:text-[#6bff8f] transition-colors group"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-md font-mono text-sm text-[#4be277] ghost-border hover:bg-[#4be277]/10 hover:text-[#6bff8f] transition-all group"
           >
             <SiGithub className="text-lg" />
+            <span>{t.projects.all}</span>
             <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">
               arrow_forward
             </span>

@@ -3,7 +3,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 type Language = "en" | "es";
 
-type Translations = {
+export type Translations = {
   nav: {
     projects: string;
     skills: string;
@@ -42,7 +42,14 @@ type Translations = {
   footer: {
     copy: string;
   };
-  stats: Array<{ value: string; label: string }>;
+  stats: {
+    experience: string;
+    experienceLabel: string;
+    projects: string;
+    projectsLabel: string;
+    graduation: string;
+    graduationLabel: string;
+  };
 };
 
 const translations: Record<Language, Translations> = {
@@ -55,8 +62,8 @@ const translations: Record<Language, Translations> = {
     },
     hero: {
       badge: "Open to opportunities",
-      role: "Mobile Dev & AI Engineer",
-      bio: "I build mobile apps with Flutter, RAG systems with FastAPI, and have over 1 year of professional software development experience from Havana, Cuba.",
+      role: "Software Engineer & AI Developer",
+      bio: "Software Engineer specialized in AI, Fullstack development, Mobile apps, and Digital Marketing. Building intelligent solutions that connect technology with people.",
       cta_work: "View My Work",
       cta_cv: "Download CV",
     },
@@ -83,13 +90,16 @@ const translations: Record<Language, Translations> = {
       btn: "Work With Me",
     },
     footer: {
-      copy: "© 2025 Andy Clemente Gago · La Habana, Cuba · CUJAE 2026",
+      copy: "© 2025 Andy Clemente Gago · La Habana, Cuba · Software Engineer",
     },
-    stats: [
-      { value: "1+", label: "YEAR EXPERIENCE" },
-      { value: "🇨🇺", label: "CUBA" },
-      { value: "2026", label: "CUJAE GRAD" },
-    ],
+    stats: {
+      experience: "1+",
+      experienceLabel: "YEAR EXPERIENCE",
+      projects: "5+",
+      projectsLabel: "SOLUTIONS DEPLOYED",
+      graduation: "2026",
+      graduationLabel: "Software Engineer",
+    },
   },
   es: {
     nav: {
@@ -100,8 +110,8 @@ const translations: Record<Language, Translations> = {
     },
     hero: {
       badge: "Abierto a oportunidades",
-      role: "Mobile Dev & AI Engineer",
-      bio: "Construyo aplicaciones móviles con Flutter, sistemas RAG con FastAPI y tengo más de 1 año de experiencia profesional en desarrollo de software desde La Habana, Cuba.",
+      role: "Ingeniero Informático y Especialista en IA",
+      bio: "Ingeniero de Software especializado en IA, desarrollo Fullstack, apps móviles y Marketing Digital. Construyendo soluciones inteligentes que conectan la tecnología con las personas.",
       cta_work: "Ver mi trabajo",
       cta_cv: "Descargar CV",
     },
@@ -128,13 +138,16 @@ const translations: Record<Language, Translations> = {
       btn: "Trabajar conmigo",
     },
     footer: {
-      copy: "© 2025 Andy Clemente Gago · La Habana, Cuba · CUJAE 2026",
+      copy: "© 2025 Andy Clemente Gago · La Habana, Cuba · Ingeniero Informático",
     },
-    stats: [
-      { value: "1+", label: "AÑO EXP" },
-      { value: "🇨🇺", label: "CUBA" },
-      { value: "2026", label: "CUJAE GRAD" },
-    ],
+    stats: {
+      experience: "1+",
+      experienceLabel: "AÑO DE EXPERIENCIA",
+      projects: "5+",
+      projectsLabel: "SOLUCIONES DESPLEGADAS",
+      graduation: "2026",
+      graduationLabel: "Ingeniero Informático",
+    },
   },
 };
 

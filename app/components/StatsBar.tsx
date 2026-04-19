@@ -7,10 +7,11 @@ export default function StatsBar() {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Los valores ahora vienen del contexto
   const stats = [
-    { value: "1+", label: "YEAR EXPERIENCE" },
-    { value: "🇨🇺", label: "CUBA" },
-    { value: "2026", label: "CUJAE GRAD" },
+    { value: t.stats.experience, label: t.stats.experienceLabel },
+    { value: t.stats.projects, label: t.stats.projectsLabel },
+    { value: t.stats.graduation, label: t.stats.graduationLabel },
   ];
 
   useEffect(() => {

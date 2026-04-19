@@ -270,3 +270,30 @@ body {
 .delay-500 {
   transition-delay: 500ms;
 }
+
+/* Animación de fade out para el loading screen */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.loading-fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+/* Spinner personalizado */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 1.5s linear infinite;
+}

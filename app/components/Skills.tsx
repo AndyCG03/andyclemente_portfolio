@@ -8,7 +8,6 @@ import {
   SiPython, 
   SiNestjs, 
   SiOpenai,
-  SiJava, 
   SiC, 
   SiJavascript, 
   SiTypescript, 
@@ -18,16 +17,28 @@ import {
   SiSqlite,
   SiGit, 
   SiGithub, 
-  SiVisualstudiocode, 
   SiLatex, 
   SiFfmpeg,
   SiCanva, 
-  SiAdobe, 
   SiWordpress
 } from "react-icons/si";
-import { MdSettings, MdDeveloperMode, MdPsychology, MdCloud, MdMic, MdStorage, MdDataset, MdFunctions, MdVideoCamera, MdDesignServices, MdBrush, MdWeb, MdCode } from "react-icons/md";
-import { GrAndroid } from "react-icons/gr";
-import { TbBrandReactNative } from "react-icons/tb";
+import { 
+  MdSettings, 
+  MdDeveloperMode, 
+  MdPsychology, 
+  MdCloud, 
+  MdMic, 
+  MdStorage, 
+  MdDataset, 
+  MdFunctions, 
+  MdDesignServices, 
+  MdBrush, 
+  MdWeb, 
+  MdCode,
+  MdCoffee
+} from "react-icons/md";
+import { VscCode } from "react-icons/vsc";
+import { FaAward } from "react-icons/fa";
 
 const skillGroups = [
   {
@@ -52,7 +63,7 @@ const skillGroups = [
   {
     category: { en: "Languages", es: "Lenguajes" },
     skills: [
-      { name: "Java", icon: <SiJava className="text-[#4be277] text-sm" /> },
+      { name: "Java", icon: <MdCoffee className="text-[#4be277] text-sm" /> },
       { name: "C", icon: <SiC className="text-[#4be277] text-sm" /> },
       { name: "JavaScript", icon: <SiJavascript className="text-[#4be277] text-sm" /> },
       { name: "TypeScript", icon: <SiTypescript className="text-[#4be277] text-sm" /> },
@@ -73,7 +84,7 @@ const skillGroups = [
     skills: [
       { name: "Git", icon: <SiGit className="text-[#4be277] text-sm" /> },
       { name: "GitHub", icon: <SiGithub className="text-[#4be277] text-sm" /> },
-      { name: "VS Code", icon: <SiVisualstudiocode className="text-[#4be277] text-sm" /> },
+      { name: "VS Code", icon: <VscCode className="text-[#4be277] text-sm" /> },
       { name: "LaTeX", icon: <MdFunctions className="text-[#4be277] text-sm" /> },
       { name: "FFmpeg", icon: <SiFfmpeg className="text-[#4be277] text-sm" /> }
     ]
@@ -82,7 +93,7 @@ const skillGroups = [
     category: { en: "Design & Other", es: "Diseño y Otros" },
     skills: [
       { name: "Canva", icon: <SiCanva className="text-[#4be277] text-sm" /> },
-      { name: "Adobe", icon: <SiAdobe className="text-[#4be277] text-sm" /> },
+      { name: "Adobe", icon: <FaAward className="text-[#4be277] text-sm" /> },
       { name: "WordPress", icon: <SiWordpress className="text-[#4be277] text-sm" /> }
     ]
   },
@@ -91,17 +102,29 @@ const skillGroups = [
 export default function Skills() {
   const { lang, t } = useLang();
   const [visibleGroups, setVisibleGroups] = useState<number[]>([]);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [quoteVisible, setQuoteVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          // Animación del header
+          setHeaderVisible(true);
+          
+          // Animación de los grupos
           skillGroups.forEach((_, index) => {
             setTimeout(() => {
               setVisibleGroups(prev => [...prev, index]);
             }, index * 150);
           });
+          
+          // Animación del quote después de los grupos
+          setTimeout(() => {
+            setQuoteVisible(true);
+          }, skillGroups.length * 150 + 300);
+          
           observer.disconnect();
         }
       },
@@ -126,7 +149,10 @@ export default function Skills() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex items-center gap-6 mb-16">
+        {/* Header con fade */}
+        <div className={`flex items-center gap-6 mb-16 transition-all duration-700 ease-out transform ${
+          headerVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        }`}>
           <span className="font-mono text-xs text-[#4be277] tracking-widest uppercase">
             03_STACK
           </span>
@@ -136,6 +162,7 @@ export default function Skills() {
           </h2>
         </div>
 
+        {/* Grid de skills */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillGroups.map((group, index) => (
             <div
@@ -147,14 +174,24 @@ export default function Skills() {
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <h3 className="font-mono text-xs text-[#64748b] uppercase tracking-widest mb-5">
+              {/* Título de la categoría con fade */}
+              <h3 className={`font-mono text-xs text-[#64748b] uppercase tracking-widest mb-5 transition-all duration-500 delay-200 ${
+                visibleGroups.includes(index) ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+              }`}>
                 {group.category[lang]}
               </h3>
+              
+              {/* Skills individuales con fade escalonado */}
               <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill, idx) => (
+                {group.skills.map((skill, skillIndex) => (
                   <span
                     key={skill.name}
-                    className="skill-chip px-3 py-1.5 bg-[#171f33] ghost-border rounded-sm font-mono text-xs text-[#bcc7de] flex items-center gap-1.5 cursor-default"
+                    className={`skill-chip px-3 py-1.5 bg-[#171f33] ghost-border rounded-sm font-mono text-xs text-[#bcc7de] flex items-center gap-1.5 cursor-default transition-all duration-300 ease-out ${
+                      visibleGroups.includes(index)
+                        ? 'translate-y-0 opacity-100 scale-100'
+                        : 'translate-y-8 opacity-0 scale-95'
+                    }`}
+                    style={{ transitionDelay: `${index * 150 + skillIndex * 50}ms` }}
                   >
                     {skill.icon}
                     {skill.name}
@@ -165,7 +202,10 @@ export default function Skills() {
           ))}
         </div>
 
-        <div className={`mt-12 p-8 bg-[#0b1326] border-l-2 border-[#4be277] relative overflow-hidden transition-all duration-700 delay-500 ease-out transform ${visibleGroups.length === skillGroups.length ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+        {/* Quote con fade */}
+        <div className={`mt-12 p-8 bg-[#0b1326] border-l-2 border-[#4be277] relative overflow-hidden transition-all duration-700 delay-500 ease-out transform ${
+          quoteVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
+        }`}>
           <div
             className="absolute -right-4 -bottom-4 font-mono text-[8rem] text-[#4be277] select-none pointer-events-none leading-none font-black"
             style={{ opacity: 0.05 }}
@@ -173,13 +213,14 @@ export default function Skills() {
           >
             {"{ }"}
           </div>
-          <p className="font-mono text-sm text-[#bcc7de] relative z-10 italic">
-            <span className="text-[#4be277] not-italic">/// </span>
+         <p className="font-mono text-sm text-[#bcc7de] relative z-10 italic">
+          <span className="text-[#4be277] not-italic">// </span>
             {lang === "en"
-              ? "I build mobile apps with Flutter, RAG systems with FastAPI, and have over 1 year of professional software development experience from Havana, Cuba."
-              : "Construyo aplicaciones móviles con Flutter, sistemas RAG con FastAPI y tengo más de 1 año de experiencia profesional en desarrollo de software desde La Habana, Cuba."}
+              ? "Complex problems don't need complex solutions. Just clean code, clear thinking, and purpose."
+              : "Los problemas complejos no necesitan soluciones complejas. Solo código limpio, pensamiento claro y propósito."}
           </p>
-          <p className="font-mono text-xs text-[#64748b] mt-2 relative z-10">
+          <p className="font-mono text-xs text-[#64748b] mt-2 relative z-10 transition-all duration-500 delay-700"
+             style={{ opacity: quoteVisible ? 1 : 0 }}>
             — Andy Clemente Gago
           </p>
         </div>

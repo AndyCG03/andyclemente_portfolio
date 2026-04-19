@@ -38,15 +38,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
           <Image
-            src="/icono.png"
+            src="/Logo.png"
             alt="Logo"
-            width={36}
-            height={36}
+            width={150}
+            height={150}
             className="object-contain transition-transform duration-300 group-hover:scale-110"
           />
-          <span className="text-xl font-black tracking-tighter text-slate-100 uppercase hidden sm:block">
-            Andy Clemente
-          </span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
