@@ -63,10 +63,11 @@
             {{ t.hero.bio }}
           </p>
 
-          <div class="flex flex-wrap gap-3 md:gap-4">
+          <!-- Botones: en mobile centrados y en una línea si es posible -->
+          <div class="flex flex-row flex-wrap justify-center md:justify-start gap-3 md:gap-4">
             <a
               href="#projects"
-              class="group inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-md font-bold text-[#002109] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(75,226,119,0.3)] text-sm md:text-base"
+              class="group inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-md font-bold text-[#002109] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(75,226,119,0.3)] text-xs sm:text-sm md:text-base"
               style="background: linear-gradient(135deg, #4be277, #22c55e)"
             >
               {{ t.hero.cta_work }}
@@ -75,7 +76,7 @@
             <a
               href="/Andy_Clemente_CV.pdf"
               download="Andy_Clemente_CV.pdf"
-              class="group inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-md font-bold text-[#4be277] ghost-border hover:bg-[#4be277]/10 transition-all relative overflow-hidden text-sm md:text-base"
+              class="group inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-md font-bold text-[#4be277] ghost-border hover:bg-[#4be277]/10 transition-all relative overflow-hidden text-xs sm:text-sm md:text-base"
             >
               <span class="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-[#4be277] to-[#22c55e] group-hover:w-full transition-all duration-300" />
               <Icon icon="mdi:download" class="text-sm" />
@@ -83,8 +84,8 @@
             </a>
           </div>
 
-          <!-- Social icons -->
-          <div class="flex items-center gap-4 md:gap-5 mt-8 md:mt-10">
+          <!-- Redes sociales centradas en mobile -->
+          <div class="flex items-center justify-center md:justify-start gap-4 md:gap-5 mt-8 md:mt-10">
             <a v-for="s in socials" :key="s.href" :href="s.href" target="_blank" rel="noopener noreferrer" :aria-label="s.label"
                class="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-sm bg-[#171f33] ghost-border text-[#64748b] hover:text-[#4be277] hover:bg-[#4be277]/10 transition-all">
               <Icon :icon="s.icon" class="w-4 h-4 md:w-5 md:h-5" />
