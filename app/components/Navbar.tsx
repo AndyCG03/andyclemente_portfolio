@@ -29,36 +29,32 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
           <Image
             src="/icono.png"
-            alt="Andy.dev logo"
+            alt="Logo"
             width={36}
             height={36}
             className="object-contain transition-transform duration-300 group-hover:scale-110"
           />
-          <span className="font-mono text-sm font-semibold text-[#dae2fd] tracking-wide hidden sm:block">
-            andy<span className="text-[#4be277]">.dev</span>
+          <span className="text-xl font-black tracking-tighter text-slate-100 uppercase hidden sm:block">
+            Andy Clemente
           </span>
         </a>
 
-        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="nav-link text-sm font-medium text-[#bcc7de] hover:text-[#dae2fd] transition-colors pb-1"
+              className="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        {/* Right: Lang toggle + Contact */}
         <div className="flex items-center gap-3">
-          {/* Language Toggle */}
           <button
             onClick={() => setLang(lang === "en" ? "es" : "en")}
             className="flex items-center gap-1 px-3 py-1.5 rounded-sm bg-[#171f33] ghost-border font-mono text-xs text-[#bcc7de] hover:text-[#4be277] hover:border-[#4be277]/30 transition-all"
@@ -70,15 +66,11 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-sm font-bold text-sm text-[#002109] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(75,226,119,0.3)]"
-            style={{
-              background: "linear-gradient(135deg, #4be277, #22c55e)",
-            }}
+            className="hidden md:inline-flex bg-gradient-to-br from-[#4be277] to-[#22c55e] text-[#002109] px-5 py-2 font-bold rounded-md hover:-translate-y-0.5 transition-transform"
           >
             {t.nav.contact}
           </a>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden p-2 text-[#bcc7de]"
@@ -90,7 +82,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-[#0b1326]/95 backdrop-blur-xl border-t border-[#3d4a3d]/20 px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
@@ -107,8 +98,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
-            className="inline-flex items-center justify-center px-5 py-2 rounded-sm font-bold text-sm text-[#002109] mt-2"
-            style={{ background: "linear-gradient(135deg, #4be277, #22c55e)" }}
+            className="inline-flex items-center justify-center px-5 py-2 rounded-sm font-bold text-sm text-[#002109] mt-2 bg-gradient-to-br from-[#4be277] to-[#22c55e]"
           >
             {t.nav.contact}
           </a>

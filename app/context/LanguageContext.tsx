@@ -1,9 +1,51 @@
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
-type Lang = "en" | "es";
+type Language = "en" | "es";
 
-const translations = {
+type Translations = {
+  nav: {
+    projects: string;
+    skills: string;
+    experience: string;
+    contact: string;
+  };
+  hero: {
+    badge: string;
+    role: string;
+    bio: string;
+    cta_work: string;
+    cta_cv: string;
+  };
+  projects: {
+    title: string;
+    view: string;
+    all: string;
+  };
+  skills: {
+    title: string;
+  };
+  experience: {
+    title: string;
+    education: string;
+    edu: {
+      desc: string;
+    };
+  };
+  contact: {
+    title: string;
+    highlight: string;
+    together: string;
+    desc: string;
+    btn: string;
+  };
+  footer: {
+    copy: string;
+  };
+  stats: Array<{ value: string; label: string }>;
+};
+
+const translations: Record<Language, Translations> = {
   en: {
     nav: {
       projects: "Projects",
@@ -12,158 +54,103 @@ const translations = {
       contact: "Contact",
     },
     hero: {
-      badge: "Available for new opportunities",
+      badge: "Open to opportunities",
       role: "Mobile Dev & AI Engineer",
-      bio: "I build mobile applications with Flutter, RAG systems with FastAPI, and have 1+ year of professional experience in software development from Havana, Cuba.",
+      bio: "I build mobile apps with Flutter, RAG systems with FastAPI, and have over 1 year of professional software development experience from Havana, Cuba.",
       cta_work: "View My Work",
-      cta_cv: "Download CV (.pdf)",
-    },
-    stats: [
-      { value: "1+", label: "Years Experience" },
-      { value: "🇨🇺", label: "Cuban Software Engineer" },
-      { value: "2026", label: "CUJAE Graduation" },
-    ],
-    about: {
-      title: "About Me",
-      desc1: "4th-year Computer Engineering student at CUJAE (Havana, Cuba), graduating July 2026. I specialize in mobile development with Flutter and AI-powered backends using FastAPI and RAG architectures.",
-      desc2: "3× ICPC Caribbean Finalist · Best ranking: #37 in the Caribbean. UNESCO 2024 & 2025, AVANCODE 2025, Global Game Jam 2025 participant.",
+      cta_cv: "Download CV",
     },
     projects: {
-      title: "Featured Projects",
-      view: "View Repo",
-      all: "View All Projects on GitHub",
+      title: "Projects",
+      view: "View on GitHub",
+      all: "View all repositories on GitHub",
     },
-    skills: { title: "Technical Stack" },
+    skills: {
+      title: "Technical Stack",
+    },
     experience: {
-      title: "Experience",
+      title: "Work Experience",
       education: "Education",
-      items: [
-        {
-          company: "BioCubaFarma (ETI)",
-          role: "Technical Programmer",
-          period: "Mar 2025 – Present",
-          desc: "Leading unified platform for multiple virtual assistants with RAG architecture. FastAPI with JWT, ChromaDB, PDF/DOCX processing and Whisper integration. SIGESTIC 2025 delegate.",
-        },
-        {
-          company: "Medialytic",
-          role: "Mobile Programmer",
-          period: "Nov 2024 – Jun 2025",
-          desc: "Intensive Flutter training: Dart, Provider and REST APIs. Developed 'El Chismoso' — Flutter app with GPS and photo upload.",
-        },
-        {
-          company: "CUJAE",
-          role: "Teaching Assistant",
-          period: "Mar 2025 – Present",
-          desc: "Introductory Programming instructor (C) for 1st-semester CS students. OOP instructor (Java) for 2nd-semester students.",
-        },
-      ],
       edu: {
-        degree: "Computer Engineering",
-        school: "CUJAE",
-        period: "Feb 2023 – Jul 2026",
-        desc: "3× ICPC Caribbean Finals · Best ranking: #37. Publication in RENIA: 'Smart Greenhouse Prototype'. UNESCO 2024 & 2025 · AVANCODE 2025 · Global Game Jam 2025.",
+        desc: "3× ICPC Caribbean Finals participant · Best ranking: #37 in the Caribbean · RENIA Publication: 'Smart Greenhouse Prototype' · UNESCO 2024 & 2025 · AVANCODE 2025 · Global Game Jam 2025",
       },
     },
     contact: {
       title: "Let's build something",
       highlight: "meaningful",
       together: "together.",
-      desc: "Currently open to opportunities, freelance projects and collaborations.",
-      btn: "Get In Touch",
+      desc: "Currently open to freelance projects and collaboration opportunities.",
+      btn: "Work With Me",
     },
     footer: {
-      copy: "© 2025 Andy Clemente · La Habana, Cuba · CUJAE 2026",
+      copy: "© 2025 Andy Clemente Gago · La Habana, Cuba · CUJAE 2026",
     },
+    stats: [
+      { value: "1+", label: "YEAR EXPERIENCE" },
+      { value: "🇨🇺", label: "CUBA" },
+      { value: "2026", label: "CUJAE GRAD" },
+    ],
   },
   es: {
     nav: {
       projects: "Proyectos",
-      skills: "Skills",
+      skills: "Habilidades",
       experience: "Experiencia",
       contact: "Contacto",
     },
     hero: {
-      badge: "Disponible para nuevas oportunidades",
+      badge: "Abierto a oportunidades",
       role: "Mobile Dev & AI Engineer",
       bio: "Construyo aplicaciones móviles con Flutter, sistemas RAG con FastAPI y tengo más de 1 año de experiencia profesional en desarrollo de software desde La Habana, Cuba.",
-      cta_work: "Ver Mi Trabajo",
-      cta_cv: "Descargar CV (.pdf)",
-    },
-    stats: [
-      { value: "1+", label: "Años de Experiencia" },
-      { value: "🇨🇺", label: "Ingeniero Cubano" },
-      { value: "2026", label: "Graduación CUJAE" },
-    ],
-    about: {
-      title: "Sobre Mí",
-      desc1: "Estudiante de 4to año de Ingeniería en Computación en la CUJAE (La Habana, Cuba), con graduación prevista en julio de 2026. Me especializo en desarrollo móvil con Flutter y backends con IA usando FastAPI y arquitecturas RAG.",
-      desc2: "3× Final del Caribe de la ICPC · Mejor ranking: #37 en el Caribe. Participante en UNESCO 2024 & 2025, AVANCODE 2025, Global Game Jam 2025.",
+      cta_work: "Ver mi trabajo",
+      cta_cv: "Descargar CV",
     },
     projects: {
-      title: "Proyectos Destacados",
-      view: "Ver Repo",
-      all: "Ver Todos los Proyectos en GitHub",
+      title: "Proyectos",
+      view: "Ver en GitHub",
+      all: "Ver todos los repositorios en GitHub",
     },
-    skills: { title: "Stack Tecnológico" },
+    skills: {
+      title: "Stack Técnico",
+    },
     experience: {
-      title: "Experiencia",
-      education: "Formación",
-      items: [
-        {
-          company: "BioCubaFarma (ETI)",
-          role: "Technical Programmer",
-          period: "Mar 2025 – Presente",
-          desc: "Liderando plataforma unificada para múltiples asistentes virtuales con arquitectura RAG. FastAPI con JWT, ChromaDB, procesamiento de PDF/DOCX e integración con Whisper. Delegado en SIGESTIC 2025.",
-        },
-        {
-          company: "Medialytic",
-          role: "Mobile Programmer",
-          period: "Nov 2024 – Jun 2025",
-          desc: "Entrenamiento intensivo en Flutter: Dart, Provider y APIs REST. Desarrolló 'El Chismoso' — app Flutter con GPS y carga de fotos.",
-        },
-        {
-          company: "CUJAE",
-          role: "Teaching Assistant",
-          period: "Mar 2025 – Presente",
-          desc: "Instructor de Programación Introductoria (C) para estudiantes de 1er semestre. Instructor de POO (Java) para estudiantes de 2do semestre.",
-        },
-      ],
+      title: "Experiencia Laboral",
+      education: "Educación",
       edu: {
-        degree: "Ingeniería en Computación",
-        school: "CUJAE",
-        period: "Feb 2023 – Jul 2026",
-        desc: "3× Final del Caribe ICPC · Mejor ranking: #37. Publicación en RENIA: 'Prototipo de Casa de Cultivo Inteligente'. UNESCO 2024 & 2025 · AVANCODE 2025 · Global Game Jam 2025.",
+        desc: "3× participante en la Final del Caribe de la ICPC · Mejor ranking: #37 en el Caribe · Publicación en RENIA: 'Prototipo de Casa de Cultivo Inteligente' · UNESCO 2024 & 2025 · AVANCODE 2025 · Global Game Jam 2025",
       },
     },
     contact: {
       title: "Construyamos algo",
       highlight: "significativo",
       together: "juntos.",
-      desc: "Actualmente abierto a oportunidades, proyectos freelance y colaboraciones.",
-      btn: "Escribir Mensaje",
+      desc: "Actualmente abierto a proyectos freelance y oportunidades de colaboración.",
+      btn: "Trabajar conmigo",
     },
     footer: {
-      copy: "© 2025 Andy Clemente · La Habana, Cuba · CUJAE 2026",
+      copy: "© 2025 Andy Clemente Gago · La Habana, Cuba · CUJAE 2026",
     },
+    stats: [
+      { value: "1+", label: "AÑO EXP" },
+      { value: "🇨🇺", label: "CUBA" },
+      { value: "2026", label: "CUJAE GRAD" },
+    ],
   },
 };
 
-type TranslationsType = typeof translations.en;
-
-interface LangContextType {
-  lang: Lang;
-  setLang: (l: Lang) => void;
-  t: TranslationsType;
-}
-
-const LangContext = createContext<LangContextType>({
+const LangContext = createContext<{
+  lang: Language;
+  setLang: (lang: Language) => void;
+  t: Translations;
+}>({
   lang: "en",
   setLang: () => {},
   t: translations.en,
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<Language>("en");
+
   return (
     <LangContext.Provider value={{ lang, setLang, t: translations[lang] }}>
       {children}
@@ -171,8 +158,4 @@ export function LangProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useLang() {
-  return useContext(LangContext);
-}
-
-export { translations };
+export const useLang = () => useContext(LangContext);

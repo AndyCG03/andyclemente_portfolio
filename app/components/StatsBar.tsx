@@ -4,6 +4,12 @@ import { useLang } from "../context/LanguageContext";
 export default function StatsBar() {
   const { t } = useLang();
 
+  const stats = [
+    { value: "1+", label: "YEAR EXPERIENCE" },
+    { value: "🇨🇺", label: "CUBA" },
+    { value: "2026", label: "CUJAE GRAD" },
+  ];
+
   return (
     <section className="relative py-12 overflow-hidden">
       <div className="absolute inset-0 bg-[#131b2e]" />
@@ -11,7 +17,7 @@ export default function StatsBar() {
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-3 gap-4 md:gap-8 divide-x divide-[#3d4a3d]/20">
-          {t.stats.map((stat, i) => (
+          {stats.map((stat, i) => (
             <div key={i} className="stat-card px-4 md:px-8 py-4 text-center">
               <div className="text-3xl md:text-5xl font-black gradient-text mb-2 leading-none">
                 {stat.value}

@@ -76,7 +76,6 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 relative">
-      {/* Section watermark */}
       <div
         className="absolute right-8 top-12 font-mono text-[10rem] font-black text-[#4be277] select-none pointer-events-none leading-none"
         style={{ opacity: 0.02 }}
@@ -86,7 +85,6 @@ export default function Projects() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section header */}
         <div className="flex items-center gap-6 mb-16">
           <span className="font-mono text-xs text-[#4be277] tracking-widest uppercase">
             02_PROJECTS
@@ -97,29 +95,22 @@ export default function Projects() {
           </h2>
         </div>
 
-        {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project) => (
-            <a
+            <div
               key={project.num}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="project-card group block bg-[#131b2e] ghost-border rounded-sm p-6 relative overflow-hidden"
             >
-              {/* Featured badge */}
               {project.featured && (
-                <div className="absolute top-4 right-4 font-mono text-xs px-2 py-0.5 rounded-sm bg-[#4be277]/10 text-[#4be277] border border-[#4be277]/20">
+                <div className="absolute top-4 right-4 font-mono text-xs px-2 py-0.5 rounded-sm bg-[#4be277]/10 text-[#4be277] border border-[#4be277]/20 z-10">
                   ★ Featured
                 </div>
               )}
 
-              {/* Line number */}
               <div className="font-mono text-4xl font-black text-[#2d3449] mb-4 group-hover:text-[#4be277]/20 transition-colors select-none">
                 {project.num}
               </div>
 
-              {/* Lang dot */}
               <div className="flex items-center gap-2 mb-3">
                 <span
                   className="w-2.5 h-2.5 rounded-full flex-shrink-0"
@@ -130,17 +121,14 @@ export default function Projects() {
                 </span>
               </div>
 
-              {/* Name */}
               <h3 className="text-lg font-bold text-[#dae2fd] mb-3 group-hover:text-[#4be277] transition-colors font-mono">
                 {project.name}
               </h3>
 
-              {/* Desc */}
               <p className="text-sm text-[#bcc7de] leading-relaxed mb-5">
                 {project.desc[lang]}
               </p>
 
-              {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <span
@@ -152,21 +140,30 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* View link */}
-              <div className="flex items-center gap-1.5 text-xs font-mono text-[#4be277] opacity-0 group-hover:opacity-100 transition-opacity">
-                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
-                </svg>
-                {t.projects.view}
-              </div>
+              {/* Botón de GitHub */}
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-sm bg-[#0b1326] ghost-border text-[#4be277] hover:bg-[#4be277]/10 transition-all w-full justify-center group/btn"
+              >
+                <span className="material-symbols-outlined text-sm">
+                  code
+                </span>
+                <span className="text-sm font-mono font-medium">
+                  {t.projects.view}
+                </span>
+                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-0.5 transition-transform">
+                  open_in_new
+                </span>
+              </a>
 
               {/* Hover bottom line */}
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#4be277] to-[#22c55e] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-            </a>
+            </div>
           ))}
         </div>
 
-        {/* All projects link */}
         <div className="mt-10 text-center">
           <a
             href="https://github.com/AndyCG03?tab=repositories"
@@ -174,11 +171,13 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-sm text-[#4be277] hover:text-[#6bff8f] transition-colors group"
           >
-            <span className="text-[#64748b]">&gt;_</span>
-            {t.projects.all}
-            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="transition-transform group-hover:translate-x-1">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            <span className="material-symbols-outlined text-sm">
+              code
+            </span>
+            <span>{t.projects.all}</span>
+            <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">
+              arrow_forward
+            </span>
           </a>
         </div>
       </div>
