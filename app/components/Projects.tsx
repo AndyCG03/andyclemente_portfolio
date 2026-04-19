@@ -7,6 +7,18 @@ import { MdOpenInNew } from "react-icons/md";
 const projects = [
   {
     num: "01",
+    name: "devisistore",
+    lang: "JavaScript / Node.js",
+    desc: {
+      en: "Multi-user digital catalog platform. Each business has its own public page with products, images, prices, high customization and direct WhatsApp contact.",
+      es: "Plataforma multi-usuario de catálogos digitales. Cada negocio tiene su propia página pública con productos, imágenes, precios, alta personalización y contacto directo por WhatsApp.",
+    },
+    tags: ["Node.js", "Express", "SQLite", "EJS", "TailwindCSS"],
+    href: "https://github.com/AndyCG03/devisistore",
+    featured: true,
+  },
+  {
+    num: "02",
     name: "ai-api-service",
     lang: "Python",
     desc: {
@@ -18,7 +30,7 @@ const projects = [
     featured: false,
   },
   {
-    num: "02",
+    num: "03",
     name: "backend-smart-task",
     lang: "Python",
     desc: {
@@ -27,10 +39,10 @@ const projects = [
     },
     tags: ["Python", "AI", "Tickets", "Backend"],
     href: "https://github.com/AndyCG03/backend-smart-task",
-    featured: true,
+    featured: false,
   },
   {
-    num: "03",
+    num: "04",
     name: "biocu",
     lang: "Dart / Flutter",
     desc: {
@@ -42,7 +54,7 @@ const projects = [
     featured: false,
   },
   {
-    num: "04",
+    num: "05",
     name: "al_toque_app",
     lang: "Flutter / Dart",
     desc: {
@@ -54,7 +66,7 @@ const projects = [
     featured: false,
   },
   {
-    num: "05",
+    num: "06",
     name: "VidCrush Pro",
     lang: "Shell",
     desc: {
@@ -68,6 +80,7 @@ const projects = [
 ];
 
 const langColors: Record<string, string> = {
+  "JavaScript / Node.js": "#f1e05a",
   Python: "#3572A5",
   "Dart / Flutter": "#00B4AB",
   "Flutter / Dart": "#00B4AB",
@@ -172,7 +185,6 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Botón de GitHub con icono real */}
               <a
                 href={project.href}
                 target="_blank"
