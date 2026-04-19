@@ -177,8 +177,8 @@ export default function Hero() {
                 alt="Andy Clemente"
                 width={500}
                 height={600}
-                className="w-full object-cover object-top"
-                style={{ aspectRatio: "4/5" }}
+                className="object-cover object-top"
+                style={{ width: "100%", height: "auto", aspectRatio: "4/5" }}
                 priority
               />
               {/* Overlay gradient */}

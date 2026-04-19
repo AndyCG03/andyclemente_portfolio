@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {
@@ -10,7 +9,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <Image src="/icono.png" alt="Logo" width={28} height={28} className="object-contain opacity-60" />
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 32 32" 
+            fill="none" 
+            className="opacity-60"
+          >
+            <rect x="2" y="2" width="28" height="28" rx="4" stroke="#4be277" strokeWidth="2" fill="none"/>
+            <path d="M8 22L16 10L24 22" stroke="#4be277" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="16" cy="18" r="2" fill="#4be277"/>
+          </svg>
           <span className="font-mono text-xs text-[#64748b]">
             andy<span className="text-[#4be277]/60">.dev</span>
           </span>

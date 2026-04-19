@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { useLang } from "../context/LanguageContext";
 
 export default function Navbar() {
@@ -31,15 +30,19 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <Image
-            src="/icono.png"
-            alt="Andy.dev logo"
-            width={36}
-            height={36}
-            className="object-contain transition-transform duration-300 group-hover:scale-110"
-          />
+          <svg 
+            width="32" 
+            height="32" 
+            viewBox="0 0 32 32" 
+            fill="none" 
+            className="transition-transform duration-300 group-hover:scale-110"
+          >
+            <rect x="2" y="2" width="28" height="28" rx="4" stroke="#4be277" strokeWidth="2" fill="none"/>
+            <path d="M8 22L16 10L24 22" stroke="#4be277" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="16" cy="18" r="2" fill="#4be277"/>
+          </svg>
           <span className="font-mono text-sm font-semibold text-[#dae2fd] tracking-wide hidden sm:block">
-            andy<span className="text-[#4be277]">.dev</span>
+            ANDY CLEMENTE
           </span>
         </a>
 
