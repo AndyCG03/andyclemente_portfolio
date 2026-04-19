@@ -12,9 +12,9 @@
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
         <img
-          src="/Logo.png"
+          src="/Icono.png"
           alt="Logo"
-          class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+          class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
         />
       </a>
 
