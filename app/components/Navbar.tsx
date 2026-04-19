@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useLang } from "../context/LanguageContext";
 
 export default function Navbar() {
@@ -23,26 +24,23 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0b1326]/80 backdrop-blur-xl shadow-lg shadow-black/30"
+          ? "bg-[#0b1326]/90 backdrop-blur-xl shadow-lg shadow-black/30"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <svg 
-            width="32" 
-            height="32" 
-            viewBox="0 0 32 32" 
-            fill="none" 
+        <a href="#" className="flex items-center gap-2 group">
+          <Image 
+            src="/icono.png"
+            alt="Andy.dev"
+            width={28}
+            height={28}
             className="transition-transform duration-300 group-hover:scale-110"
-          >
-            <rect x="2" y="2" width="28" height="28" rx="4" stroke="#4be277" strokeWidth="2" fill="none"/>
-            <path d="M8 22L16 10L24 22" stroke="#4be277" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="16" cy="18" r="2" fill="#4be277"/>
-          </svg>
-          <span className="font-mono text-sm font-semibold text-[#dae2fd] tracking-wide hidden sm:block">
-            ANDY CLEMENTE
+            style={{ width: "auto", height: "auto" }}
+          />
+          <span className="font-bold text-sm text-[#dae2fd] tracking-wide hidden sm:block uppercase">
+            Andy Clemente
           </span>
         </a>
 
@@ -52,7 +50,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="nav-link text-sm font-medium text-[#bcc7de] hover:text-[#dae2fd] transition-colors pb-1"
+              className="nav-link text-sm font-medium text-[#bcc7de] hover:text-[#4be277] transition-colors"
             >
               {link.label}
             </a>
@@ -60,11 +58,11 @@ export default function Navbar() {
         </div>
 
         {/* Right: Lang toggle + Contact */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           {/* Language Toggle */}
           <button
             onClick={() => setLang(lang === "en" ? "es" : "en")}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-sm bg-[#171f33] ghost-border font-mono text-xs text-[#bcc7de] hover:text-[#4be277] hover:border-[#4be277]/30 transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#171f33]/50 font-mono text-xs text-[#bcc7de] hover:text-[#4be277] transition-all"
           >
             <span className={lang === "en" ? "text-[#4be277]" : ""}>EN</span>
             <span className="text-[#3d4a3d]">/</span>
@@ -73,10 +71,7 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-sm font-bold text-sm text-[#002109] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(75,226,119,0.3)]"
-            style={{
-              background: "linear-gradient(135deg, #4be277, #22c55e)",
-            }}
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm text-[#0b1326] bg-[#4be277] hover:bg-[#3dd168] transition-all duration-200"
           >
             {t.nav.contact}
           </a>
@@ -95,23 +90,21 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0b1326]/95 backdrop-blur-xl border-t border-[#3d4a3d]/20 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#0b1326]/95 backdrop-blur-xl border-t border-[#3d4a3d]/20 px-6 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-sm text-[#bcc7de] hover:text-[#4be277] transition-colors py-1 font-mono"
+              className="text-sm text-[#bcc7de] hover:text-[#4be277] transition-colors py-2"
             >
-              <span className="text-[#4be277] mr-2">&gt;_</span>
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
-            className="inline-flex items-center justify-center px-5 py-2 rounded-sm font-bold text-sm text-[#002109] mt-2"
-            style={{ background: "linear-gradient(135deg, #4be277, #22c55e)" }}
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full font-semibold text-sm text-[#0b1326] bg-[#4be277] mt-2"
           >
             {t.nav.contact}
           </a>

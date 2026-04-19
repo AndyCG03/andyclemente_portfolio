@@ -75,108 +75,83 @@ export default function Projects() {
   const { lang, t } = useLang();
 
   return (
-    <section id="projects" className="py-24 relative">
-      {/* Section watermark */}
-      <div
-        className="absolute right-8 top-12 font-mono text-[10rem] font-black text-[#4be277] select-none pointer-events-none leading-none"
-        style={{ opacity: 0.02 }}
-        aria-hidden
-      >
-        fn()
-      </div>
-
+    <section id="projects" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
-        <div className="flex items-center gap-6 mb-16">
-          <span className="font-mono text-xs text-[#4be277] tracking-widest uppercase">
-            02_PROJECTS
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+          <span className="text-xs text-[#4be277] tracking-widest uppercase font-medium">
+            Featured Work
           </span>
-          <div className="h-px flex-grow bg-[#3d4a3d]/20" />
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-[#dae2fd] whitespace-nowrap">
+          <div className="hidden sm:block h-px flex-grow bg-[#3d4a3d]/30" />
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#dae2fd]">
             {t.projects.title}
           </h2>
+          <span className="text-sm text-[#64748b]">
+            {projects.length.toString().padStart(2, "0")} items
+          </span>
         </div>
 
         {/* Projects grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project) => (
             <a
               key={project.num}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="project-card group block bg-[#131b2e] ghost-border rounded-sm p-6 relative overflow-hidden"
+              className="group block bg-[#131b2e] border border-[#2d3449]/50 rounded-lg p-5 hover:border-[#4be277]/30 transition-all duration-300"
             >
-              {/* Featured badge */}
-              {project.featured && (
-                <div className="absolute top-4 right-4 font-mono text-xs px-2 py-0.5 rounded-sm bg-[#4be277]/10 text-[#4be277] border border-[#4be277]/20">
-                  ★ Featured
-                </div>
-              )}
-
-              {/* Line number */}
-              <div className="font-mono text-4xl font-black text-[#2d3449] mb-4 group-hover:text-[#4be277]/20 transition-colors select-none">
-                {project.num}
-              </div>
-
-              {/* Lang dot */}
-              <div className="flex items-center gap-2 mb-3">
-                <span
-                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: langColors[project.lang] || "#64748b" }}
-                />
-                <span className="font-mono text-xs text-[#64748b]">
-                  {project.lang}
+              {/* Header with number and lang */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-2xl font-bold text-[#2d3449] group-hover:text-[#4be277]/30 transition-colors">
+                  {project.num}
                 </span>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="w-2 h-2 rounded-full"
+                    style={{ backgroundColor: langColors[project.lang] || "#64748b" }}
+                  />
+                  <span className="text-xs text-[#64748b]">
+                    {project.lang}
+                  </span>
+                </div>
               </div>
 
               {/* Name */}
-              <h3 className="text-lg font-bold text-[#dae2fd] mb-3 group-hover:text-[#4be277] transition-colors font-mono">
+              <h3 className="text-base font-semibold text-[#dae2fd] mb-2 group-hover:text-[#4be277] transition-colors">
                 {project.name}
               </h3>
 
               {/* Desc */}
-              <p className="text-sm text-[#bcc7de] leading-relaxed mb-5">
+              <p className="text-sm text-[#94a3b8] leading-relaxed mb-4 line-clamp-3">
                 {project.desc[lang]}
               </p>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag) => (
+              <div className="flex flex-wrap gap-1.5">
+                {project.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="skill-chip px-2.5 py-1 rounded-sm bg-[#2d3449] font-mono text-xs text-[#94a3b8]"
+                    className="px-2 py-1 rounded-md bg-[#4be277]/10 text-xs text-[#4be277]"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-
-              {/* View link */}
-              <div className="flex items-center gap-1.5 text-xs font-mono text-[#4be277] opacity-0 group-hover:opacity-100 transition-opacity">
-                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
-                </svg>
-                {t.projects.view}
-              </div>
-
-              {/* Hover bottom line */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#4be277] to-[#22c55e] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </a>
           ))}
         </div>
 
         {/* All projects link */}
-        <div className="mt-10 text-center">
+        <div className="mt-8 text-center">
           <a
             href="https://github.com/AndyCG03?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-sm text-[#4be277] hover:text-[#6bff8f] transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-[#4be277] hover:underline transition-colors"
           >
-            <span className="text-[#64748b]">&gt;_</span>
             {t.projects.all}
-            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="transition-transform group-hover:translate-x-1">
+            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>

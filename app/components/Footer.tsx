@@ -1,27 +1,25 @@
 "use client";
+import Image from "next/image";
 import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {
   const { t } = useLang();
 
   return (
-    <footer className="bg-[#060e20] border-t border-[#3d4a3d]/20 py-12 px-6">
+    <footer className="bg-[#060e20] border-t border-[#3d4a3d]/20 py-8 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <svg 
-            width="24" 
-            height="24" 
-            viewBox="0 0 32 32" 
-            fill="none" 
-            className="opacity-60"
-          >
-            <rect x="2" y="2" width="28" height="28" rx="4" stroke="#4be277" strokeWidth="2" fill="none"/>
-            <path d="M8 22L16 10L24 22" stroke="#4be277" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="16" cy="18" r="2" fill="#4be277"/>
-          </svg>
-          <span className="font-mono text-xs text-[#64748b]">
-            andy<span className="text-[#4be277]/60">.dev</span>
+        <div className="flex items-center gap-2">
+          <Image 
+            src="/icono.png"
+            alt="Andy.dev"
+            width={20}
+            height={20}
+            className="opacity-70"
+            style={{ width: "auto", height: "auto" }}
+          />
+          <span className="text-xs text-[#64748b]">
+            andy<span className="text-[#4be277]">.dev</span>
           </span>
         </div>
 

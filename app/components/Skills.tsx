@@ -32,40 +32,31 @@ export default function Skills() {
   const { lang, t } = useLang();
 
   return (
-    <section id="skills" className="py-24 bg-[#131b2e] relative overflow-hidden">
-      {/* Watermark */}
-      <div
-        className="absolute left-0 top-0 font-mono text-[18rem] font-black text-[#4be277] select-none pointer-events-none leading-none"
-        style={{ opacity: 0.018 }}
-        aria-hidden
-      >
-        {"</>"}
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="skills" className="py-20 bg-[#0f1624]">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="flex items-center gap-6 mb-16">
-          <span className="font-mono text-xs text-[#4be277] tracking-widest uppercase">
-            03_STACK
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+          <span className="text-xs text-[#4be277] tracking-widest uppercase font-medium">
+            Technical Stack
           </span>
-          <div className="h-px flex-grow bg-[#3d4a3d]/20" />
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-[#dae2fd] whitespace-nowrap">
+          <div className="hidden sm:block h-px flex-grow bg-[#3d4a3d]/30" />
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#dae2fd]">
             {t.skills.title}
           </h2>
         </div>
 
         {/* Skill groups */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {skillGroups.map((group, i) => (
-            <div key={i} className="bg-[#0b1326] ghost-border rounded-sm p-6">
-              <h3 className="font-mono text-xs text-[#64748b] uppercase tracking-widest mb-5">
+            <div key={i} className="bg-[#131b2e] border border-[#2d3449]/50 rounded-lg p-5">
+              <h3 className="text-xs text-[#64748b] uppercase tracking-widest mb-4">
                 {group.category[lang]}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="skill-chip px-3 py-1.5 bg-[#171f33] ghost-border rounded-sm font-mono text-xs text-[#bcc7de] cursor-default"
+                    className="px-3 py-1.5 bg-[#2d3449]/50 rounded-md text-xs text-[#bcc7de]"
                   >
                     {skill}
                   </span>
@@ -76,22 +67,11 @@ export default function Skills() {
         </div>
 
         {/* Quote block */}
-        <div className="mt-12 p-8 bg-[#0b1326] border-l-2 border-[#4be277] relative overflow-hidden">
-          <div
-            className="absolute -right-4 -bottom-4 font-mono text-[8rem] text-[#4be277] select-none pointer-events-none leading-none font-black"
-            style={{ opacity: 0.05 }}
-            aria-hidden
-          >
-            {"{ }"}
-          </div>
-          <p className="font-mono text-sm text-[#bcc7de] relative z-10 italic">
-            <span className="text-[#4be277] not-italic">/// </span>
+        <div className="mt-10 p-6 bg-[#131b2e] border-l-2 border-[#4be277] rounded-r-lg">
+          <p className="text-sm text-[#94a3b8] italic">
             {lang === "en"
-              ? "Clean code, real projects, results that speak for themselves."
-              : "Código limpio, proyectos reales, resultados que hablan solos."}
-          </p>
-          <p className="font-mono text-xs text-[#64748b] mt-2 relative z-10">
-            — Andy Clemente, andy.dev brand manual
+              ? "\"Software engineering is not just about writing code; it's about solving human problems through precision and empathy.\""
+              : "\"La ingeniería de software no es solo escribir código; es resolver problemas humanos con precisión y empatía.\""}
           </p>
         </div>
       </div>
