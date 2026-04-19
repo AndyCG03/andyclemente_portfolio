@@ -7,11 +7,16 @@ export default function Navbar() {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsVisible(true);
   }, []);
 
   const navLinks = [
@@ -22,7 +27,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out transform ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      } ${
         scrolled
           ? "bg-[#0b1326]/80 backdrop-blur-xl shadow-lg shadow-black/30"
           : "bg-transparent"
@@ -43,11 +50,12 @@ export default function Navbar() {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map((link, idx) => (
             <a
               key={link.href}
               href={link.href}
               className="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1"
+              style={{ animationDelay: `${idx * 100}ms` }}
             >
               {link.label}
             </a>
@@ -83,7 +91,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-[#0b1326]/95 backdrop-blur-xl border-t border-[#3d4a3d]/20 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#0b1326]/95 backdrop-blur-xl border-t border-[#3d4a3d]/20 px-6 py-4 flex flex-col gap-4 animate-fade-in-down">
           {navLinks.map((link) => (
             <a
               key={link.href}

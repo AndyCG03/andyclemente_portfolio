@@ -1,8 +1,12 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Experience() {
   const { lang, t } = useLang();
+  const [visible, setVisible] = useState(false);
+  const [visibleAchievements, setVisibleAchievements] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const experiences = [
     {
@@ -41,8 +45,31 @@ export default function Experience() {
     { icon: "sports_esports", label: "Global Game Jam 2025", sub: "AVANCODE 2025" },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          achievements.forEach((_, index) => {
+            setTimeout(() => {
+              setVisibleAchievements(prev => [...prev, index]);
+            }, index * 100);
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="experience" className="py-24 relative" ref={sectionRef}>
       <div
         className="absolute right-8 bottom-12 font-mono text-[10rem] font-black text-[#4be277] select-none pointer-events-none leading-none"
         style={{ opacity: 0.02 }}
@@ -66,7 +93,13 @@ export default function Experience() {
             </h2>
             <div className="relative pl-8 border-l border-[#2d3449]">
               {experiences.map((exp, i) => (
-                <div key={i} className="relative mb-12 last:mb-0">
+                <div
+                  key={i}
+                  className={`relative mb-12 last:mb-0 transition-all duration-500 ease-out transform ${
+                    visible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${i * 150}ms` }}
+                >
                   <div
                     className={`timeline-dot absolute -left-[1.175rem] top-1 w-3.5 h-3.5 rounded-full border-2 border-[#0b1326] ${
                       i === 0
@@ -96,7 +129,7 @@ export default function Experience() {
               {t.experience.education}
             </h2>
 
-            <div className="bg-[#131b2e] ghost-border rounded-sm p-8 mb-8 relative overflow-hidden">
+            <div className={`bg-[#131b2e] ghost-border rounded-sm p-8 mb-8 relative overflow-hidden transition-all duration-500 delay-300 ease-out transform ${visible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
               <div
                 className="absolute top-4 right-4 font-mono text-[6rem] font-black text-[#4be277] select-none pointer-events-none leading-none"
                 style={{ opacity: 0.05 }}
@@ -119,10 +152,15 @@ export default function Experience() {
             </div>
 
             <div className="space-y-3">
-              {achievements.map((item) => (
+              {achievements.map((item, index) => (
                 <div
                   key={item.label}
-                  className="flex items-center gap-4 p-4 bg-[#131b2e] ghost-border rounded-sm"
+                  className={`flex items-center gap-4 p-4 bg-[#131b2e] ghost-border rounded-sm transition-all duration-500 ease-out transform ${
+                    visibleAchievements.includes(index)
+                      ? 'translate-x-0 opacity-100'
+                      : '-translate-x-8 opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <span className="material-symbols-outlined text-2xl text-[#4be277]">
                     {item.icon}

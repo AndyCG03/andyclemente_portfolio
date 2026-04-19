@@ -1,5 +1,8 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "../context/LanguageContext";
+import { SiGithub } from "react-icons/si";
+import { MdOpenInNew } from "react-icons/md";
 
 const projects = [
   {
@@ -73,9 +76,33 @@ const langColors: Record<string, string> = {
 
 export default function Projects() {
   const { lang, t } = useLang();
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          projects.forEach((_, index) => {
+            setTimeout(() => {
+              setVisibleItems(prev => [...prev, index]);
+            }, index * 100);
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="py-24 relative" ref={sectionRef}>
       <div
         className="absolute right-8 top-12 font-mono text-[10rem] font-black text-[#4be277] select-none pointer-events-none leading-none"
         style={{ opacity: 0.02 }}
@@ -96,10 +123,15 @@ export default function Projects() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.num}
-              className="project-card group block bg-[#131b2e] ghost-border rounded-sm p-6 relative overflow-hidden"
+              className={`project-card group block bg-[#131b2e] ghost-border rounded-sm p-6 relative overflow-hidden transition-all duration-500 ease-out transform ${
+                visibleItems.includes(index)
+                  ? 'translate-y-0 opacity-100'
+                  : 'translate-y-12 opacity-0'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               {project.featured && (
                 <div className="absolute top-4 right-4 font-mono text-xs px-2 py-0.5 rounded-sm bg-[#4be277]/10 text-[#4be277] border border-[#4be277]/20 z-10">
@@ -140,25 +172,18 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Botón de GitHub */}
+              {/* Botón de GitHub con icono real */}
               <a
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-sm bg-[#0b1326] ghost-border text-[#4be277] hover:bg-[#4be277]/10 transition-all w-full justify-center group/btn"
+                className="inline-flex items-center justify-center gap-2 mt-2 px-4 py-2 rounded-sm bg-[#0b1326] ghost-border text-[#4be277] hover:bg-[#4be277]/10 transition-all w-full group/btn"
+                aria-label="View on GitHub"
               >
-                <span className="material-symbols-outlined text-sm">
-                  code
-                </span>
-                <span className="text-sm font-mono font-medium">
-                  {t.projects.view}
-                </span>
-                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-0.5 transition-transform">
-                  open_in_new
-                </span>
+                <SiGithub className="text-lg" />
+                <MdOpenInNew className="text-sm group-hover/btn:translate-x-0.5 transition-transform" />
               </a>
 
-              {/* Hover bottom line */}
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#4be277] to-[#22c55e] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </div>
           ))}
@@ -171,10 +196,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-sm text-[#4be277] hover:text-[#6bff8f] transition-colors group"
           >
-            <span className="material-symbols-outlined text-sm">
-              code
-            </span>
-            <span>{t.projects.all}</span>
+            <SiGithub className="text-lg" />
             <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">
               arrow_forward
             </span>

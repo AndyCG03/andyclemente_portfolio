@@ -1,11 +1,32 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Contact() {
   const { t } = useLang();
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-24 relative overflow-hidden" ref={sectionRef}>
       <div
         className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center font-black text-[20rem] text-[#4be277] select-none pointer-events-none leading-none"
         style={{ opacity: 0.015 }}
@@ -15,7 +36,11 @@ export default function Contact() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="bg-[#131b2e] ghost-border rounded-sm p-12 md:p-20 text-center relative overflow-hidden">
+        <div
+          className={`bg-[#131b2e] ghost-border rounded-sm p-12 md:p-20 text-center relative overflow-hidden transition-all duration-700 ease-out transform ${
+            visible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
+          }`}
+        >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-1 bg-gradient-to-r from-transparent via-[#4be277] to-transparent" />
 
           <div className="font-mono text-xs text-[#4be277] tracking-widest uppercase mb-8 block">
@@ -23,10 +48,10 @@ export default function Contact() {
           </div>
 
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-[#dae2fd] mb-4">
-            Let&apos;s build something{" "}
-            <span className="gradient-text">meaningful</span>
+            {t.contact.title}{" "}
+            <span className="gradient-text">{t.contact.highlight}</span>
             <br />
-            together.
+            {t.contact.together}
           </h2>
 
           <p className="text-[#bcc7de] max-w-lg mx-auto mb-10 text-lg leading-relaxed">
