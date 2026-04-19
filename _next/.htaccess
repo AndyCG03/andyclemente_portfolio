@@ -1,7 +1,0 @@
-# Allow access to all files in this directory
-<IfModule mod_autoindex.c>
-  Options -Indexes
-</IfModule>
-
-Allow from all
-Satisfy Any
