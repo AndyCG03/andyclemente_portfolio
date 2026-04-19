@@ -115,7 +115,7 @@ const photoTags = [
 
 const socials = [
   { href: 'https://github.com/AndyCG03',           icon: 'fa6-brands:github',    label: 'GitHub' },
-  { href: 'https://linkedin.com/in/andy-clemente', icon: 'fa6-brands:linkedin',  label: 'LinkedIn' },
+  { href: 'https://www.linkedin.com/in/andy-clemente-gago-7590362a4?utm_source=share_via&utm_content=profile&utm_medium=member_android', icon: 'fa6-brands:linkedin',  label: 'LinkedIn' },
   { href: 'https://x.com/AndyClemente6',           icon: 'fa6-brands:twitter',   label: 'X / Twitter' },
   { href: 'https://instagram.com/ing.andyclemente',icon: 'fa6-brands:instagram', label: 'Instagram' },
 ]
