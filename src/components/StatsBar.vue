@@ -17,10 +17,9 @@
           <div class="text-2xl sm:text-3xl md:text-5xl font-black gradient-text mb-1 sm:mb-2 leading-none">
             {{ stat.value }}
           </div>
-          <!-- Label responsive: versión corta en mobile, completa en desktop -->
-          <div class="font-mono text-[10px] sm:text-xs md:text-sm text-[#64748b] uppercase tracking-wider sm:tracking-widest leading-tight">
-            <span class="sm:hidden">{{ stat.shortLabel }}</span>
-            <span class="hidden sm:inline">{{ stat.label }}</span>
+          <!-- Texto completo, solo más pequeño en mobile para que no se tape -->
+          <div class="font-mono text-[9px] sm:text-xs md:text-sm text-[#64748b] uppercase tracking-wider sm:tracking-widest leading-tight">
+            {{ stat.label }}
           </div>
         </div>
       </div>
@@ -37,21 +36,9 @@ const sectionRef = ref(null)
 const visible = ref(false)
 
 const stats = computed(() => [
-  { 
-    value: t.value.stats.experience,  
-    label: t.value.stats.experienceLabel,
-    shortLabel: 'EXP'
-  },
-  { 
-    value: t.value.stats.projects,    
-    label: t.value.stats.projectsLabel,
-    shortLabel: 'SHIPPED'
-  },
-  { 
-    value: t.value.stats.graduation,  
-    label: t.value.stats.graduationLabel,
-    shortLabel: 'SWE'
-  },
+  { value: t.value.stats.experience,  label: t.value.stats.experienceLabel },
+  { value: t.value.stats.projects,    label: t.value.stats.projectsLabel },
+  { value: t.value.stats.graduation,  label: t.value.stats.graduationLabel },
 ])
 
 let observer
@@ -68,6 +55,13 @@ onUnmounted(() => observer?.disconnect())
 /* Asegurar que el texto no se desborde */
 .stat-card {
   min-width: 0;
-  overflow: hidden;
+}
+
+/* En mobile muy pequeño, reducir aún más el texto */
+@media (max-width: 480px) {
+  .stat-card div:last-child {
+    font-size: 0.55rem;
+    letter-spacing: 0.02em;
+  }
 }
 </style>
