@@ -1,5 +1,5 @@
 <template>
-  <section class="relative min-h-screen flex items-center pt-10 md:pt-16 overflow-hidden hero-gradient">
+  <section class="relative min-h-screen flex items-center pt-12 md:pt-18 overflow-hidden hero-gradient">
     <!-- Watermarks -->
     <div class="absolute right-0 top-1/4 text-[20rem] font-black text-[#4be277] pointer-events-none select-none leading-none" style="opacity:0.025" aria-hidden="true">{ }</div>
     <div class="absolute left-0 bottom-0 text-[16rem] font-black font-mono text-[#4be277] pointer-events-none select-none leading-none" style="opacity:0.02" aria-hidden="true">&gt;_</div>
@@ -8,7 +8,7 @@
       <div class="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-20 items-center">
 
         <!-- Photo -->
-        <div :class="['order-1 md:order-2 flex justify-start md:justify-center w-full transition-all duration-700 delay-300 ease-out transform', isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0']">
+        <div :class="['order-1 md:order-2 flex justify-center w-full transition-all duration-700 delay-300 ease-out transform', isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0']">
           <div class="relative">
             <div class="absolute inset-0 bg-[#4be277]/15 blur-[80px] rounded-full scale-75" />
             <div class="relative z-10 w-56 sm:w-64 md:w-72 lg:w-80">
