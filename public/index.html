@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Andy Clemente — Software Engineer & AI Developer from Havana, Cuba" />
+  <title>Andy Clemente · andy.dev</title>
+  <link rel="icon" type="image/png" href="/Icono.png" />
+
+  <!-- ── Fonts ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
+
+  <!-- ── Tailwind CDN ── -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- ── Iconify ── -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: #0b1326; color: #dae2fd; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    ::selection { background-color: #4be277; color: #002109; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1326; }
+    ::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4be277; }
+
+    /* ── Helpers ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #4be277, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ghost-border { border: 1px solid rgba(61,74,61,0.15); }
+
+    /* ── Material Symbols ── */
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-style: normal;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    /* ── Animations ── */
+    @keyframes blink   { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes spin    { to { transform: rotate(360deg); } }
+    @keyframes pulse   { 0%,100%{opacity:1} 50%{opacity:.5} }
+    @keyframes fadeOut { from{opacity:1} to{opacity:0;pointer-events:none} }
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+    .cursor-blink      { animation: blink 1s step-end infinite; }
+    .animate-spin-slow { animation: spin 1.5s linear infinite; }
+    .animate-pulse     { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+    .animate-fade-in-down { animation: fadeInDown 0.4s ease-out forwards; }
+
+    /* ── Hero gradient bg ── */
+    .hero-gradient {
+      background: radial-gradient(ellipse 60% 50% at 60% 40%, rgba(75,226,119,0.06) 0%, transparent 70%);
+    }
+
+    /* ── Stat card bottom bar on hover ── */
+    .stat-card { position: relative; overflow: hidden; }
+    .stat-card::after {
+      content: ''; position: absolute; bottom:0; left:0; right:0; height:2px;
+      background: linear-gradient(90deg,#4be277,#22c55e);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+    }
+    .stat-card:hover::after { transform: scaleX(1); }
+
+    /* ── Nav link underline ── */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom:-4px; left:0;
+      width: 0; height: 2px; background: #4be277; transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Cards ── */
+    .project-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(75,226,119,0.08); }
+    .skill-chip { transition: all 0.2s ease; cursor: default; }
+    .skill-chip:hover { background-color: rgba(75,226,119,0.12) !important; color: #4be277 !important; }
+
+    /* ── Scroll-reveal ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-left {
+      opacity: 0; transform: translateX(-30px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .fade-left.visible { opacity: 1; transform: translateX(0); }
+
+    .fade-right {
+      opacity: 0; transform: translateX(30px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .fade-right.visible { opacity: 1; transform: translateX(0); }
+
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+
+    /* ── Small screens stat label ── */
+    @media (max-width: 480px) {
+      .stat-label { font-size: 0.55rem; letter-spacing: 0.02em; }
+    }
+  </style>
+</head>
+
+<body class="bg-[#0b1326] text-[#dae2fd] font-sans overflow-x-hidden">
+
+<!-- ══════════════════════════════════════
+     LOADING SCREEN
+══════════════════════════════════════ -->
+<div id="loading-screen" class="fixed inset-0 z-[100] bg-[#0b1326] flex flex-col items-center justify-center">
+  <div class="relative mb-8">
+    <div class="w-20 h-20 border-4 border-[#2d3449] rounded-full animate-spin-slow border-t-[#4be277]"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <img src="/Icono.png" alt="Logo" class="w-8 h-8 object-contain" />
+    </div>
+  </div>
+  <p class="font-mono text-sm text-[#4be277] animate-pulse">Loading...</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCROLL PROGRESS BAR
+══════════════════════════════════════ -->
+<div id="scroll-progress"
+     class="fixed top-0 left-0 z-[200] h-[2px] bg-gradient-to-r from-[#4be277] to-[#22c55e] pointer-events-none"
+     style="width:0%;transition:width 75ms linear"></div>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 w-full z-50" style="transform:translateY(-100%);opacity:0;transition:transform 0.5s ease,opacity 0.5s ease">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 group">
+      <img src="/Icono.png" alt="andy.dev" class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110" />
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#projects"   class="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1" data-i18n="nav.projects">Projects</a>
+      <a href="#skills"     class="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1" data-i18n="nav.skills">Skills</a>
+      <a href="#experience" class="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1" data-i18n="nav.experience">Experience</a>
+    </div>
+
+    <!-- Right controls -->
+    <div class="flex items-center gap-3">
+      <!-- Lang toggle -->
+      <button onclick="toggleLang()"
+              class="flex items-center gap-1 px-3 py-1.5 rounded-sm bg-[#171f33] ghost-border font-mono text-xs text-[#bcc7de] hover:text-[#4be277] hover:border-[#4be277]/30 transition-all">
+        <span id="btn-en" class="text-[#4be277]">EN</span>
+        <span class="text-[#3d4a3d]">/</span>
+        <span id="btn-es">ES</span>
+      </button>
+      <!-- Desktop CTA -->
+      <a href="#contact"
+         class="hidden md:inline-flex bg-gradient-to-br from-[#4be277] to-[#22c55e] text-[#002109] px-5 py-2 font-bold rounded-md text-sm hover:-translate-y-0.5 transition-transform"
+         data-i18n="nav.contact">Contact</a>
+      <!-- Hamburger -->
+      <button id="hamburger" onclick="toggleMenu()" class="md:hidden p-2 text-[#bcc7de]" aria-label="Menu">
+        <div id="ham-1" class="w-5 h-0.5 bg-current mb-1" style="transition:transform .3s,opacity .3s"></div>
+        <div id="ham-2" class="w-5 h-0.5 bg-current mb-1" style="transition:opacity .3s"></div>
+        <div id="ham-3" class="w-5 h-0.5 bg-current"      style="transition:transform .3s"></div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden bg-[#0b1326]/95 backdrop-blur-xl border-t border-[#3d4a3d]/20 px-6 py-4 flex-col gap-4 animate-fade-in-down">
+    <a href="#projects"   onclick="closeMenu()" class="text-sm text-[#bcc7de] hover:text-[#4be277] transition-colors py-1 font-mono">
+      <span class="text-[#4be277] mr-2">&gt;_</span><span data-i18n="nav.projects">Projects</span>
+    </a>
+    <a href="#skills"     onclick="closeMenu()" class="text-sm text-[#bcc7de] hover:text-[#4be277] transition-colors py-1 font-mono">
+      <span class="text-[#4be277] mr-2">&gt;_</span><span data-i18n="nav.skills">Skills</span>
+    </a>
+    <a href="#experience" onclick="closeMenu()" class="text-sm text-[#bcc7de] hover:text-[#4be277] transition-colors py-1 font-mono">
+      <span class="text-[#4be277] mr-2">&gt;_</span><span data-i18n="nav.experience">Experience</span>
+    </a>
+    <a href="#contact" onclick="closeMenu()"
+       class="inline-flex items-center justify-center px-5 py-2 rounded-sm font-bold text-sm text-[#002109] mt-2 bg-gradient-to-br from-[#4be277] to-[#22c55e]"
+       data-i18n="nav.contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     MAIN
+══════════════════════════════════════ -->
+<main>
+
+<!-- ── HERO ─────────────────────────────── -->
+<section id="hero" class="relative min-h-screen flex items-center pt-12 md:pt-18 overflow-hidden hero-gradient">
+  <!-- Watermarks -->
+  <div class="absolute right-0 top-1/4 text-[20rem] font-black text-[#4be277] pointer-events-none select-none leading-none" style="opacity:0.025" aria-hidden="true">{ }</div>
+  <div class="absolute left-0 bottom-0 text-[16rem] font-black font-mono text-[#4be277] pointer-events-none select-none leading-none" style="opacity:0.02" aria-hidden="true">&gt;_</div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full py-6 md:py-12">
+    <div class="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-20 items-center">
+
+      <!-- Photo – first on mobile, second on desktop -->
+      <div class="order-1 md:order-2 flex justify-center w-full fade-up delay-300">
+        <div class="relative">
+          <div class="absolute inset-0 bg-[#4be277]/15 blur-[80px] rounded-full scale-75"></div>
+          <div class="relative z-10 w-56 sm:w-64 md:w-72 lg:w-80">
+            <!-- Fake file browser bar -->
+            <div class="bg-[#171f33] ghost-border rounded-t-lg px-3 py-2 flex items-center gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+              <span class="ml-2 font-mono text-[10px] sm:text-xs text-[#64748b] truncate">andy_clemente.jpg</span>
+            </div>
+            <div class="relative overflow-hidden ghost-border border-t-0 rounded-b-lg">
+              <img src="/andy.jpg" alt="Andy Clemente" class="w-full object-cover object-top" style="aspect-ratio:4/5" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0b1326]/60 via-transparent to-transparent"></div>
+              <!-- Photo tags -->
+              <div class="absolute bottom-3 left-3 right-3">
+                <div class="flex flex-wrap gap-1.5 justify-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-1 rounded-sm bg-[#0b1326]/80 backdrop-blur-sm font-mono text-[9px] sm:text-[10px] text-[#4be277]">
+                    <span class="w-1 h-1 rounded-full bg-[#4be277] inline-block animate-pulse"></span>
+                    Software Engineer
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-2 py-1 rounded-sm bg-[#0b1326]/80 backdrop-blur-sm font-mono text-[9px] sm:text-[10px] text-[#4be277]">
+                    <span class="material-symbols-outlined" style="font-size:10px">psychology</span>AI
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-2 py-1 rounded-sm bg-[#0b1326]/80 backdrop-blur-sm font-mono text-[9px] sm:text-[10px] text-[#4be277]">
+                    <span class="material-symbols-outlined" style="font-size:10px">smartphone</span>Mobile
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-2 py-1 rounded-sm bg-[#0b1326]/80 backdrop-blur-sm font-mono text-[9px] sm:text-[10px] text-[#4be277]">
+                    <span class="material-symbols-outlined" style="font-size:10px">code</span>Fullstack
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-2 py-1 rounded-sm bg-[#0b1326]/80 backdrop-blur-sm font-mono text-[9px] sm:text-[10px] text-[#4be277]">
+                    <span class="material-symbols-outlined" style="font-size:10px">campaign</span>Marketing
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text – second on mobile, first on desktop -->
+      <div class="order-2 md:order-1 relative z-10 w-full fade-up">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 md:mb-8 rounded-sm bg-[#171f33] ghost-border font-mono text-xs text-[#4be277] tracking-widest uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#4be277] inline-block animate-pulse"></span>
+          <span data-i18n="hero.badge">Open to opportunities</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter text-[#dae2fd] mb-3 leading-[1.1]">
+          Andy <span class="gradient-text">Clemente</span>
+        </h1>
+
+        <div class="font-mono text-base md:text-lg text-[#bcc7de] mb-2 tracking-widest flex items-center gap-2">
+          <span class="text-[#4be277]">//</span>
+          <span data-i18n="hero.role">Software Engineer &amp; AI Developer</span>
+        </div>
+
+        <div class="font-mono text-xs text-[#64748b] mb-6 md:mb-8 flex items-center gap-1 flex-wrap">
+          <span class="text-[#22c55e]">&gt;_</span>
+          <span>la_habana</span>
+          <span class="text-[#3d4a3d]">/</span>
+          <span>cuba</span>
+          <span class="cursor-blink ml-1 text-[#4be277]">|</span>
+        </div>
+
+        <p class="text-sm sm:text-base lg:text-lg text-[#bcc7de] max-w-lg mb-8 leading-relaxed" data-i18n="hero.bio">
+          Software Engineer specialized in AI, Fullstack development, Mobile apps, and Digital Marketing. Building intelligent solutions that connect technology with people.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-row flex-wrap justify-center md:justify-start gap-3 md:gap-4">
+          <a href="#projects"
+             class="group inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-md font-bold text-[#002109] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(75,226,119,0.3)] text-xs sm:text-sm md:text-base"
+             style="background:linear-gradient(135deg,#4be277,#22c55e)">
+            <span data-i18n="hero.cta_work">View My Work</span>
+            <iconify-icon icon="mdi:arrow-right" style="font-size:1rem"></iconify-icon>
+          </a>
+          <a href="/Andy_Clemente_CV.pdf" download="Andy_Clemente_CV.pdf"
+             class="group inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-md font-bold text-[#4be277] ghost-border hover:bg-[#4be277]/10 transition-all relative overflow-hidden text-xs sm:text-sm md:text-base">
+            <span class="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-[#4be277] to-[#22c55e] group-hover:w-full transition-all duration-300"></span>
+            <iconify-icon icon="mdi:download" style="font-size:1rem"></iconify-icon>
+            <span data-i18n="hero.cta_cv">Download CV</span>
+          </a>
+        </div>
+
+        <!-- Socials -->
+        <div class="flex items-center justify-center md:justify-start gap-4 md:gap-5 mt-8 md:mt-10">
+          <a href="https://github.com/AndyCG03" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+             class="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-sm bg-[#171f33] ghost-border text-[#64748b] hover:text-[#4be277] hover:bg-[#4be277]/10 transition-all">
+            <iconify-icon icon="fa6-brands:github" style="font-size:1.1rem"></iconify-icon>
+          </a>
+          <a href="https://www.linkedin.com/in/andy-clemente-gago-7590362a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+             class="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-sm bg-[#171f33] ghost-border text-[#64748b] hover:text-[#4be277] hover:bg-[#4be277]/10 transition-all">
+            <iconify-icon icon="fa6-brands:linkedin" style="font-size:1.1rem"></iconify-icon>
+          </a>
+          <a href="https://x.com/AndyClemente6" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"
+             class="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-sm bg-[#171f33] ghost-border text-[#64748b] hover:text-[#4be277] hover:bg-[#4be277]/10 transition-all">
+            <iconify-icon icon="fa6-brands:x-twitter" style="font-size:1.1rem"></iconify-icon>
+          </a>
+          <a href="https://instagram.com/ing.andyclemente" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+             class="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-sm bg-[#171f33] ghost-border text-[#64748b] hover:text-[#4be277] hover:bg-[#4be277]/10 transition-all">
+            <iconify-icon icon="fa6-brands:instagram" style="font-size:1.1rem"></iconify-icon>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ─────────────────────────────── -->
+<section id="stats" class="relative py-8 md:py-12 overflow-hidden">
+  <div class="absolute inset-0 bg-[#131b2e]"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(75,226,119,0.03) 0%,transparent 50%,rgba(75,226,119,0.03) 100%)"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8">
+      <div class="stat-card px-2 sm:px-4 md:px-8 py-3 sm:py-4 text-center fade-up" style="min-width:0">
+        <div class="text-2xl sm:text-3xl md:text-5xl font-black gradient-text mb-1 sm:mb-2 leading-none" data-i18n="stats.experience">1+</div>
+        <div class="font-mono text-[9px] sm:text-xs md:text-sm text-[#64748b] uppercase tracking-wider leading-tight stat-label" data-i18n="stats.experienceLabel">YEAR EXPERIENCE</div>
+      </div>
+      <div class="stat-card px-2 sm:px-4 md:px-8 py-3 sm:py-4 text-center fade-up delay-200" style="min-width:0">
+        <div class="text-2xl sm:text-3xl md:text-5xl font-black gradient-text mb-1 sm:mb-2 leading-none" data-i18n="stats.projects">5+</div>
+        <div class="font-mono text-[9px] sm:text-xs md:text-sm text-[#64748b] uppercase tracking-wider leading-tight stat-label" data-i18n="stats.projectsLabel">SOLUTIONS DEPLOYED</div>
+      </div>
+      <div class="stat-card px-2 sm:px-4 md:px-8 py-3 sm:py-4 text-center fade-up delay-400" style="min-width:0">
+        <div class="text-2xl sm:text-3xl md:text-5xl font-black gradient-text mb-1 sm:mb-2 leading-none" data-i18n="stats.graduation">2026</div>
+        <div class="font-mono text-[9px] sm:text-xs md:text-sm text-[#64748b] uppercase tracking-wider leading-tight stat-label" data-i18n="stats.graduationLabel">Software Engineer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ─────────────────────────── -->
+<section id="projects" class="py-24 relative">
+  <div class="absolute right-8 top-12 font-mono text-[10rem] font-black text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.02" aria-hidden="true">fn()</div>
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="flex items-center gap-6 mb-16 fade-up">
+      <span class="font-mono text-xs text-[#4be277] tracking-widest uppercase">02_PROJECTS</span>
+      <div class="h-px flex-grow bg-[#3d4a3d]/20"></div>
+      <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-[#dae2fd] whitespace-nowrap" data-i18n="projects.title">Projects</h2>
+    </div>
+    <!-- Grid – rendered by JS -->
+    <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    <!-- All repos -->
+    <div class="mt-12 text-center fade-up delay-500">
+      <a href="https://github.com/AndyCG03?tab=repositories" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-3 px-6 py-3 rounded-md font-mono text-sm text-[#4be277] ghost-border hover:bg-[#4be277]/10 hover:text-[#6bff8f] transition-all group">
+        <iconify-icon icon="simple-icons:github" style="font-size:1.1rem"></iconify-icon>
+        <span data-i18n="projects.all">View all repositories on GitHub</span>
+        <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ─────────────────────────── -->
+<section id="skills" class="py-24 bg-[#131b2e] relative overflow-hidden">
+  <div class="absolute left-0 top-0 font-mono text-[18rem] font-black text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.018" aria-hidden="true">&lt;/&gt;</div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Header -->
+    <div class="flex items-center gap-6 mb-16 fade-up">
+      <span class="font-mono text-xs text-[#4be277] tracking-widest uppercase">03_STACK</span>
+      <div class="h-px flex-grow bg-[#3d4a3d]/20"></div>
+      <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-[#dae2fd] whitespace-nowrap" data-i18n="skills.title">Stack</h2>
+    </div>
+    <!-- Skill grid – rendered by JS -->
+    <div id="skills-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <!-- Quote -->
+    <div class="mt-12 p-8 bg-[#0b1326] border-l-2 border-[#4be277] relative overflow-hidden fade-up delay-500">
+      <div class="absolute -right-4 -bottom-4 font-mono text-[8rem] text-[#4be277] select-none pointer-events-none leading-none font-black" style="opacity:0.05" aria-hidden="true">{ }</div>
+      <p class="font-mono text-sm text-[#bcc7de] relative z-10 italic">
+        <span class="text-[#4be277] not-italic">// </span>
+        <span data-i18n="quote">Complex problems don't need complex solutions. Just clean code, clear thinking, and purpose.</span>
+      </p>
+      <p class="font-mono text-xs text-[#64748b] mt-2 relative z-10">— Andy Clemente Gago</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ─────────────────────── -->
+<section id="experience" class="py-24 relative">
+  <div class="absolute right-8 bottom-12 font-mono text-[10rem] font-black text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.02" aria-hidden="true">#</div>
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="flex items-center gap-6 mb-16 fade-up">
+      <span class="font-mono text-xs text-[#4be277] tracking-widest uppercase">04_EXPERIENCE</span>
+      <div class="h-px flex-grow bg-[#3d4a3d]/20"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-16 lg:gap-24">
+
+      <!-- Work column -->
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tighter text-[#dae2fd] mb-12 fade-left"
+            data-i18n="experience.title">Work Experience</h2>
+        <div class="relative pl-8 border-l border-[#2d3449]" id="experience-timeline">
+          <!-- rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Education column -->
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tighter text-[#dae2fd] mb-12 fade-right delay-100"
+            data-i18n="experience.education">Education</h2>
+
+        <!-- Education card -->
+        <div class="bg-[#131b2e] ghost-border rounded-sm p-8 mb-8 relative overflow-hidden fade-up delay-300">
+          <div class="absolute top-4 right-4 font-mono text-[6rem] font-black text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.05" aria-hidden="true">A</div>
+          <span class="font-mono text-xs text-[#4be277] tracking-widest block mb-4">Feb 2023 — Mar 2026</span>
+          <h3 class="text-2xl font-black text-[#dae2fd] mb-1">Software Engineer</h3>
+          <p class="font-mono text-sm text-[#64748b] mb-4">CUJAE · <span data-i18n="edu.location">Havana, Cuba</span></p>
+          <p class="text-sm text-[#bcc7de] leading-relaxed" data-i18n="experience.edu.desc"></p>
+        </div>
+
+        <!-- Achievements – rendered by JS -->
+        <div id="achievements-list" class="space-y-3"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────── -->
+<section id="contact" class="py-24 relative overflow-hidden">
+  <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center font-black text-[20rem] text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.015" aria-hidden="true">&gt;_</div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="bg-[#131b2e] ghost-border rounded-sm p-12 md:p-20 text-center relative overflow-hidden fade-up">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-[2px] bg-gradient-to-r from-transparent via-[#4be277] to-transparent"></div>
+      <div class="font-mono text-xs text-[#4be277] tracking-widest uppercase mb-8">05_CONTACT</div>
+
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-[#dae2fd] mb-4">
+        <span data-i18n="contact.title">Let's build something</span>
+        <span class="gradient-text" data-i18n="contact.highlight"> meaningful</span><br />
+        <span data-i18n="contact.together">together.</span>
+      </h2>
+
+      <p class="text-[#bcc7de] max-w-lg mx-auto mb-10 text-lg leading-relaxed"
+         data-i18n="contact.desc">Currently open to freelance projects and collaboration opportunities.</p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="mailto:ing.andyclemente@gmail.com"
+           class="inline-flex items-center gap-3 px-10 py-4 rounded-md font-bold text-[#002109] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_40px_rgba(75,226,119,0.3)]"
+           style="background:linear-gradient(135deg,#4be277,#22c55e)">
+          <span class="material-symbols-outlined">mail</span>
+          <span data-i18n="contact.btn">Work With Me</span>
+        </a>
+        <a href="https://www.linkedin.com/in/andy-clemente-gago-7590362a4" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold text-[#4be277] ghost-border hover:bg-[#4be277]/10 transition-all">
+          <span class="material-symbols-outlined">work</span>
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <a href="mailto:ing.andyclemente@gmail.com"
+           class="flex items-center gap-2 font-mono text-sm text-[#64748b] hover:text-[#4be277] transition-colors">
+          <span class="material-symbols-outlined" style="font-size:1rem">mail</span>
+          ing.andyclemente@gmail.com
+        </a>
+        <a href="tel:+5355847601"
+           class="flex items-center gap-2 font-mono text-sm text-[#64748b] hover:text-[#4be277] transition-colors">
+          <span class="material-symbols-outlined" style="font-size:1rem">call</span>
+          +53 55847601
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="bg-[#060e20] border-t border-[#3d4a3d]/20 py-12 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 fade-up">
+    <div class="flex items-center gap-3">
+      <img src="/Logo.png" alt="andy.dev" class="h-10 w-auto object-contain" />
+    </div>
+    <p class="font-mono text-xs text-[#3d4a3d] text-center" data-i18n="footer.copy">© 2025 Andy Clemente Gago · La Habana, Cuba · Software Engineer</p>
+    <div class="flex gap-6">
+      <a href="https://github.com/AndyCG03"               target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+         class="text-[#3d4a3d] hover:text-[#4be277] transition-colors">
+        <iconify-icon icon="fa6-brands:github" style="font-size:1.25rem"></iconify-icon>
+      </a>
+      <a href="https://www.linkedin.com/in/andy-clemente-gago-7590362a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+         class="text-[#3d4a3d] hover:text-[#4be277] transition-colors">
+        <iconify-icon icon="fa6-brands:linkedin" style="font-size:1.25rem"></iconify-icon>
+      </a>
+      <a href="https://x.com/AndyClemente6"               target="_blank" rel="noopener noreferrer" aria-label="X"
+         class="text-[#3d4a3d] hover:text-[#4be277] transition-colors">
+        <iconify-icon icon="fa6-brands:x-twitter" style="font-size:1.25rem"></iconify-icon>
+      </a>
+      <a href="https://instagram.com/ing.andyclemente"    target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+         class="text-[#3d4a3d] hover:text-[#4be277] transition-colors">
+        <iconify-icon icon="fa6-brands:instagram" style="font-size:1.25rem"></iconify-icon>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+/* ════════════════════════════════════════
+   DATA
+════════════════════════════════════════ */
+const translations = {
+  en: {
+    'nav.projects':   'Projects',
+    'nav.skills':     'Skills',
+    'nav.experience': 'Experience',
+    'nav.contact':    'Contact',
+    'hero.badge':     'Open to opportunities',
+    'hero.role':      'Software Engineer & AI Developer',
+    'hero.bio':       'Software Engineer specialized in AI, Fullstack development, Mobile apps, and Digital Marketing. Building intelligent solutions that connect technology with people.',
+    'hero.cta_work':  'View My Work',
+    'hero.cta_cv':    'Download CV',
+    'projects.title': 'Projects',
+    'projects.all':   'View all repositories on GitHub',
+    'skills.title':   'Stack',
+    'experience.title':     'Work Experience',
+    'experience.education': 'Education',
+    'experience.edu.desc':  "3× ICPC Caribbean Finals participant · Best ranking: #37 in the Caribbean · RENIA Publication: 'Smart Greenhouse Prototype' · UNESCO 2024 & 2025 · AVANCODE 2025 · Global Game Jam 2025",
+    'contact.title':    "Let's build something",
+    'contact.highlight':'meaningful',
+    'contact.together': 'together.',
+    'contact.desc':     'Currently open to freelance projects and collaboration opportunities.',
+    'contact.btn':      'Work With Me',
+    'footer.copy':      '© 2025 Andy Clemente Gago · La Habana, Cuba · Software Engineer',
+    'stats.experience':       '1+',
+    'stats.experienceLabel':  'YEAR EXPERIENCE',
+    'stats.projects':         '5+',
+    'stats.projectsLabel':    'SOLUTIONS DEPLOYED',
+    'stats.graduation':       '2026',
+    'stats.graduationLabel':  'Software Engineer',
+    'quote':           "Complex problems don't need complex solutions. Just clean code, clear thinking, and purpose.",
+    'edu.location':    'Havana, Cuba',
+  },
+  es: {
+    'nav.projects':   'Proyectos',
+    'nav.skills':     'Habilidades',
+    'nav.experience': 'Experiencia',
+    'nav.contact':    'Contacto',
+    'hero.badge':     'Abierto a oportunidades',
+    'hero.role':      'Ingeniero Informático y Especialista en IA',
+    'hero.bio':       'Ingeniero de Software especializado en IA, desarrollo Fullstack, apps móviles y Marketing Digital. Construyendo soluciones inteligentes que conectan la tecnología con las personas.',
+    'hero.cta_work':  'Ver mi trabajo',
+    'hero.cta_cv':    'Descargar CV',
+    'projects.title': 'Proyectos',
+    'projects.all':   'Ver todos los repositorios en GitHub',
+    'skills.title':   'Stack',
+    'experience.title':     'Experiencia Laboral',
+    'experience.education': 'Educación',
+    'experience.edu.desc':  "3× participante en la Final del Caribe de la ICPC · Mejor ranking: #37 en el Caribe · Publicación en RENIA: 'Prototipo de Casa de Cultivo Inteligente' · UNESCO 2024 & 2025 · AVANCODE 2025 · Global Game Jam 2025",
+    'contact.title':    'Construyamos algo',
+    'contact.highlight':'significativo',
+    'contact.together': 'juntos.',
+    'contact.desc':     'Actualmente abierto a proyectos freelance y oportunidades de colaboración.',
+    'contact.btn':      'Trabajar conmigo',
+    'footer.copy':      '© 2025 Andy Clemente Gago · La Habana, Cuba · Ingeniero Informático',
+    'stats.experience':       '1+',
+    'stats.experienceLabel':  'AÑO DE EXPERIENCIA',
+    'stats.projects':         '5+',
+    'stats.projectsLabel':    'SOLUCIONES DESPLEGADAS',
+    'stats.graduation':       '2026',
+    'stats.graduationLabel':  'Ingeniero Informático',
+    'quote':           "Los problemas complejos no necesitan soluciones complejas. Solo código limpio, pensamiento claro y propósito.",
+    'edu.location':    'La Habana, Cuba',
+  },
+};
+
+const projects = [
+  {
+    num: '01', name: 'devisistore', lang: 'JavaScript / Node.js', featured: true,
+    desc: {
+      en: 'Multi-user digital catalog platform. Each business has its own public page with products, images, prices, high customization and direct WhatsApp contact.',
+      es: 'Plataforma multi-usuario de catálogos digitales. Cada negocio tiene su propia página pública con productos, imágenes, precios, alta personalización y contacto directo por WhatsApp.',
+    },
+    tags: ['Node.js', 'Express', 'SQLite', 'EJS', 'TailwindCSS'],
+    href: 'https://github.com/AndyCG03/devisistore',
+  },
+  {
+    num: '02', name: 'ai-api-service', lang: 'Python', featured: false,
+    desc: {
+      en: 'REST API with FastAPI for local AI services: text generation, audio transcription, embeddings and OCR. Optimized for limited resources.',
+      es: 'API REST con FastAPI para servicios de IA locales: generación de texto, transcripción de audio, embeddings y OCR. Optimizado para recursos limitados.',
+    },
+    tags: ['FastAPI', 'RAG', 'Whisper', 'OCR'],
+    href: 'https://github.com/AndyCG03/ai-api-service',
+  },
+  {
+    num: '03', name: 'backend-smart-task', lang: 'Python', featured: false,
+    desc: {
+      en: 'Backend for a ticket management solution for developers with integrated AI. Architecture oriented towards development teams.',
+      es: 'Backend para una solución de gestión de tickets para programadores con IA integrada. Arquitectura orientada a equipos de desarrollo.',
+    },
+    tags: ['Python', 'AI', 'Tickets', 'Backend'],
+    href: 'https://github.com/AndyCG03/backend-smart-task',
+  },
+  {
+    num: '04', name: 'biocu', lang: 'Flutter / Dart', featured: false,
+    desc: {
+      en: 'Flutter + NestJS platform to report environmental issues. Mobile app with citizen reporting system and integrated backend.',
+      es: 'Plataforma Flutter + NestJS para reportar problemas ambientales. App móvil con sistema de reportes ciudadanos y backend integrado.',
+    },
+    tags: ['Flutter', 'Dart', 'NestJS', 'Environment'],
+    href: 'https://github.com/AndyCG03/biocu',
+  },
+  {
+    num: '05', name: 'al_toque_app', lang: 'Flutter / Dart', featured: false,
+    desc: {
+      en: 'Flutter app to check real-time exchange rates in Cuba. Converts between informal market currencies quickly and efficiently.',
+      es: 'App Flutter para consultar tasas de cambio en Cuba en tiempo real. Convierte entre monedas del mercado informal rápida y eficientemente.',
+    },
+    tags: ['Flutter', 'Dart', 'Cuba', 'Finance'],
+    href: 'https://github.com/AndyCG03/al_toque_app',
+  },
+  {
+    num: '06', name: 'VidCrush Pro', lang: 'Shell', featured: false,
+    desc: {
+      en: 'Professional video compressor via terminal with FFmpeg. Magic Folder mode: drag a folder and automatically process videos. Creates optimized GIFs.',
+      es: 'Compresor de video profesional vía terminal con FFmpeg. Modo Carpeta Mágica: arrastra una carpeta y procesa videos automáticamente. Crea GIFs optimizados.',
+    },
+    tags: ['Shell', 'FFmpeg', 'CLI', 'Video'],
+    href: 'https://github.com/AndyCG03/VidCrush---Video-Compresor',
+  },
+];
+
+const langColors = {
+  'JavaScript / Node.js': '#f1e05a',
+  'Python': '#3572A5',
+  'Flutter / Dart': '#00B4AB',
+  'Shell': '#89e051',
+};
+
+const skillGroups = [
+  { category: { en: 'Mobile', es: 'Mobile' }, skills: [
+    { name: 'Flutter',        icon: 'simple-icons:flutter' },
+    { name: 'Dart',           icon: 'simple-icons:dart' },
+    { name: 'Provider',       icon: 'mdi:cog' },
+    { name: 'Android Studio', icon: 'mdi:android-studio' },
+  ]},
+  { category: { en: 'AI & Backend', es: 'IA & Backend' }, skills: [
+    { name: 'FastAPI', icon: 'simple-icons:fastapi' },
+    { name: 'Python',  icon: 'simple-icons:python' },
+    { name: 'RAG',     icon: 'mdi:brain' },
+    { name: 'NestJS',  icon: 'simple-icons:nestjs' },
+    { name: 'Whisper', icon: 'simple-icons:openai' },
+  ]},
+  { category: { en: 'Languages', es: 'Lenguajes' }, skills: [
+    { name: 'Java',       icon: 'simple-icons:openjdk' },
+    { name: 'C',          icon: 'simple-icons:c' },
+    { name: 'JavaScript', icon: 'simple-icons:javascript' },
+    { name: 'TypeScript', icon: 'simple-icons:typescript' },
+    { name: 'Vue.js',     icon: 'simple-icons:vuedotjs' },
+  ]},
+  { category: { en: 'Databases', es: 'Bases de Datos' }, skills: [
+    { name: 'PostgreSQL', icon: 'simple-icons:postgresql' },
+    { name: 'MySQL',      icon: 'simple-icons:mysql' },
+    { name: 'SQLite',     icon: 'simple-icons:sqlite' },
+    { name: 'ChromaDB',   icon: 'mdi:database' },
+  ]},
+  { category: { en: 'Tools', es: 'Herramientas' }, skills: [
+    { name: 'Git',     icon: 'simple-icons:git' },
+    { name: 'GitHub',  icon: 'simple-icons:github' },
+    { name: 'VS Code', icon: 'simple-icons:visualstudiocode' },
+    { name: 'LaTeX',   icon: 'simple-icons:latex' },
+    { name: 'FFmpeg',  icon: 'simple-icons:ffmpeg' },
+  ]},
+  { category: { en: 'Design & Other', es: 'Diseño y Otros' }, skills: [
+    { name: 'Canva',     icon: 'simple-icons:canva' },
+    { name: 'Adobe',     icon: 'simple-icons:adobe' },
+    { name: 'WordPress', icon: 'simple-icons:wordpress' },
+  ]},
+];
+
+const experiences = [
+  {
+    period: 'Mar 2025 — Present', company: 'BioCubaFarma (ETI)', role: 'Technical Programmer',
+    desc: {
+      en: 'Leading unified platform for multiple virtual assistants with RAG architecture. FastAPI with JWT, ChromaDB, PDF/DOCX processing and Whisper integration. Delegate at SIGESTIC 2025.',
+      es: 'Liderando plataforma unificada para múltiples asistentes virtuales con arquitectura RAG. FastAPI con JWT, ChromaDB, procesamiento de PDF/DOCX e integración con Whisper. Delegado en SIGESTIC 2025.',
+    },
+  },
+  {
+    period: 'Nov 2024 — Jun 2025', company: 'Medialytic', role: 'Mobile Programmer',
+    desc: {
+      en: "Intensive Flutter training: Dart, Provider and REST APIs. Developed 'El Chismoso' — Flutter app with GPS and photo upload.",
+      es: "Entrenamiento intensivo en Flutter: Dart, Provider y APIs REST. Desarrolló 'El Chismoso' — app Flutter con GPS y carga de fotos.",
+    },
+  },
+  {
+    period: 'Mar 2025 — Present', company: 'CUJAE', role: 'Teaching Assistant',
+    desc: {
+      en: 'Introductory Programming (C) instructor for 1st semester Computer Engineering students. Object-Oriented Programming (Java) instructor for 2nd semester students.',
+      es: 'Instructor de Programación Introductoria (C) para estudiantes de 1er semestre de Ingeniería en Computación. Instructor de Programación Orientada a Objetos (Java) para 2do semestre.',
+    },
+  },
+];
+
+const achievements = [
+  { icon: 'emoji_events', label: { en: 'ICPC Caribbean Finals', es: 'Finales del Caribe ICPC' },    sub: { en: '3× · Best: #37', es: '3× · Mejor: #37' } },
+  { icon: 'description',  label: { en: 'RENIA Publication', es: 'Publicación RENIA' },               sub: { en: 'Smart Greenhouse Prototype', es: 'Prototipo de Invernadero Inteligente' } },
+  { icon: 'public',       label: { en: 'UNESCO', es: 'UNESCO' },                                     sub: { en: '2024 & 2025', es: '2024 & 2025' } },
+  { icon: 'sports_esports', label: { en: 'Global Game Jam 2025', es: 'Global Game Jam 2025' },       sub: { en: 'AVANCODE 2025', es: 'AVANCODE 2025' } },
+];
+
+/* ════════════════════════════════════════
+   LANG STATE
+════════════════════════════════════════ */
+let lang = 'en';
+
+function T(key) {
+  return translations[lang][key] ?? key;
+}
+
+function applyLang() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = T(el.dataset.i18n);
+  });
+  document.getElementById('btn-en').className = lang === 'en' ? 'text-[#4be277]' : '';
+  document.getElementById('btn-es').className = lang === 'es' ? 'text-[#4be277]' : '';
+  document.documentElement.lang = lang;
+  renderProjects();
+  renderSkills();
+  renderExperience();
+}
+
+function toggleLang() {
+  lang = lang === 'en' ? 'es' : 'en';
+  applyLang();
+}
+
+/* ════════════════════════════════════════
+   RENDER: PROJECTS
+════════════════════════════════════════ */
+function renderProjects() {
+  const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+  grid.innerHTML = projects.map((p, i) => `
+    <div class="project-card group bg-[#131b2e] ghost-border rounded-sm p-6 relative overflow-hidden fade-up"
+         style="transition-delay:${i * 100}ms">
+      ${p.featured
+        ? '<div class="absolute top-4 right-4 font-mono text-xs px-2 py-0.5 rounded-sm bg-[#4be277]/10 text-[#4be277] border border-[#4be277]/20 z-10">★ Featured</div>'
+        : ''}
+      <div class="font-mono text-4xl font-black text-[#2d3449] mb-4 group-hover:text-[#4be277]/20 transition-colors select-none">${p.num}</div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background-color:${langColors[p.lang] || '#64748b'}"></span>
+        <span class="font-mono text-xs text-[#64748b]">${p.lang}</span>
+      </div>
+      <h3 class="text-lg font-bold text-[#dae2fd] mb-3 group-hover:text-[#4be277] transition-colors font-mono">${p.name}</h3>
+      <p class="text-sm text-[#bcc7de] leading-relaxed mb-5">${p.desc[lang]}</p>
+      <div class="flex flex-wrap gap-2 mb-4">
+        ${p.tags.map(t => `<span class="skill-chip px-2.5 py-1 rounded-sm bg-[#2d3449] font-mono text-xs text-[#94a3b8]">${t}</span>`).join('')}
+      </div>
+      <a href="${p.href}" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"
+         class="inline-flex items-center justify-center gap-2 mt-2 px-4 py-2 rounded-sm bg-[#0b1326] ghost-border text-[#4be277] hover:bg-[#4be277]/10 transition-all w-full">
+        <iconify-icon icon="simple-icons:github" style="font-size:1.1rem"></iconify-icon>
+        <iconify-icon icon="mdi:open-in-new" style="font-size:0.9rem"></iconify-icon>
+      </a>
+      <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#4be277] to-[#22c55e] scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+    </div>
+  `).join('');
+  triggerObserver();
+}
+
+/* ════════════════════════════════════════
+   RENDER: SKILLS
+════════════════════════════════════════ */
+function renderSkills() {
+  const grid = document.getElementById('skills-grid');
+  if (!grid) return;
+  grid.innerHTML = skillGroups.map((g, i) => `
+    <div class="bg-[#0b1326] ghost-border rounded-sm p-6 fade-up" style="transition-delay:${i * 150}ms">
+      <h3 class="font-mono text-xs text-[#64748b] uppercase tracking-widest mb-5">${g.category[lang]}</h3>
+      <div class="flex flex-wrap gap-2">
+        ${g.skills.map((s, si) => `
+          <span class="skill-chip px-3 py-1.5 bg-[#171f33] ghost-border rounded-sm font-mono text-xs text-[#bcc7de] inline-flex items-center gap-1.5"
+                style="transition-delay:${i * 150 + si * 50}ms">
+            <iconify-icon icon="${s.icon}" style="color:#4be277;font-size:0.875rem"></iconify-icon>
+            ${s.name}
+          </span>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+  triggerObserver();
+}
+
+/* ════════════════════════════════════════
+   RENDER: EXPERIENCE
+════════════════════════════════════════ */
+function renderExperience() {
+  const timeline = document.getElementById('experience-timeline');
+  if (timeline) {
+    timeline.innerHTML = experiences.map((exp, i) => `
+      <div class="relative mb-12 last:mb-0 fade-left" style="transition-delay:${i * 150 + 200}ms">
+        <div class="absolute top-2 w-3.5 h-3.5 rounded-full border-2 border-[#0b1326] ${i === 0
+          ? 'bg-[#4be277] shadow-[0_0_10px_rgba(75,226,119,0.5)]'
+          : 'bg-[#2d3449] border-[#4be277]/40'
+        }" style="left:-1.15rem"></div>
+        <span class="font-mono text-xs text-[#4be277] tracking-widest block mb-2">${exp.period}</span>
+        <h3 class="text-xl font-bold text-[#dae2fd] mb-0.5">${exp.company}</h3>
+        <p class="font-mono text-sm text-[#64748b] mb-3">${exp.role}</p>
+        <p class="text-sm text-[#bcc7de] leading-relaxed">${exp.desc[lang]}</p>
+      </div>
+    `).join('');
+  }
+
+  const achList = document.getElementById('achievements-list');
+  if (achList) {
+    achList.innerHTML = achievements.map((item, i) => `
+      <div class="flex items-center gap-4 p-4 bg-[#131b2e] ghost-border rounded-sm fade-right hover:border-[#4be277]/30 hover:bg-[#4be277]/5 transition-all"
+           style="transition-delay:${i * 100 + 500}ms">
+        <span class="material-symbols-outlined text-2xl text-[#4be277]">${item.icon}</span>
+        <div>
+          <p class="text-sm font-bold text-[#dae2fd]">${item.label[lang]}</p>
+          <p class="font-mono text-xs text-[#64748b]">${item.sub[lang]}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+  triggerObserver();
+}
+
+/* ════════════════════════════════════════
+   SCROLL REVEAL (IntersectionObserver)
+════════════════════════════════════════ */
+let revealObserver;
+
+function triggerObserver() {
+  if (revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up:not(.visible), .fade-left:not(.visible), .fade-right:not(.visible)')
+    .forEach(el => revealObserver.observe(el));
+}
+
+/* ════════════════════════════════════════
+   NAVBAR
+════════════════════════════════════════ */
+let menuOpen = false;
+
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  const menu = document.getElementById('mobile-menu');
+  const h1   = document.getElementById('ham-1');
+  const h2   = document.getElementById('ham-2');
+  const h3   = document.getElementById('ham-3');
+  if (menuOpen) {
+    menu.classList.remove('hidden');
+    menu.classList.add('flex');
+    h1.style.transform = 'rotate(45deg) translateY(6px)';
+    h2.style.opacity   = '0';
+    h3.style.transform = 'rotate(-45deg) translateY(-6px)';
+  } else {
+    closeMenu();
+  }
+}
+
+function closeMenu() {
+  menuOpen = false;
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.add('hidden');
+  menu.classList.remove('flex');
+  document.getElementById('ham-1').style.transform = '';
+  document.getElementById('ham-2').style.opacity   = '';
+  document.getElementById('ham-3').style.transform = '';
+}
+
+/* ════════════════════════════════════════
+   SCROLL EVENTS
+════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  // Progress bar
+  const prog = document.getElementById('scroll-progress');
+  if (prog) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = max > 0 ? (window.scrollY / max * 100) + '%' : '0%';
+  }
+  // Navbar background
+  const nav = document.getElementById('navbar');
+  if (nav) {
+    if (window.scrollY > 20) {
+      nav.style.background       = 'rgba(11,19,38,0.85)';
+      nav.style.backdropFilter   = 'blur(20px)';
+      nav.style.boxShadow        = '0 4px 30px rgba(0,0,0,0.3)';
+    } else {
+      nav.style.background       = 'transparent';
+      nav.style.backdropFilter   = 'none';
+      nav.style.boxShadow        = 'none';
+    }
+  }
+}, { passive: true });
+
+/* ════════════════════════════════════════
+   INIT
+════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Loading screen
+  const loading   = document.getElementById('loading-screen');
+  const hideLoad  = () => {
+    if (!loading || loading.dataset.hidden) return;
+    loading.dataset.hidden = '1';
+    loading.style.transition = 'opacity 0.5s ease';
+    loading.style.opacity    = '0';
+    loading.style.pointerEvents = 'none';
+    setTimeout(() => { loading.style.display = 'none'; }, 500);
+  };
+  setTimeout(hideLoad, 1500);
+  window.addEventListener('load', () => setTimeout(hideLoad, 300), { once: true });
+
+  // Show navbar
+  const nav = document.getElementById('navbar');
+  if (nav) {
+    setTimeout(() => {
+      nav.style.transform = 'translateY(0)';
+      nav.style.opacity   = '1';
+    }, 200);
+  }
+
+  // Render dynamic content
+  renderProjects();
+  renderSkills();
+  renderExperience();
+  applyLang();
+  triggerObserver();
+});
+</script>
+</body>
+</html>
