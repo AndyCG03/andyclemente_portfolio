@@ -146,6 +146,7 @@
       <a href="#about"      class="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1" data-i18n="nav.about">About</a>
       <a href="#projects"   class="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1" data-i18n="nav.projects">Projects</a>
       <a href="#skills"     class="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1" data-i18n="nav.skills">Skills</a>
+      <a href="#assistant"  class="nav-link text-sm font-medium text-[#bcc7de] hover:text-slate-100 transition-colors pb-1" data-i18n="nav.assistant">Assistant</a>
     </div>
 
     <div class="flex items-center gap-3">
@@ -178,6 +179,9 @@
     </a>
     <a href="#skills"     onclick="closeMenu()" class="text-sm text-[#bcc7de] hover:text-[#4be277] transition-colors py-1 font-mono">
       <span class="text-[#4be277] mr-2">&gt;_</span><span data-i18n="nav.skills">Skills</span>
+    </a>
+    <a href="#assistant"  onclick="closeMenu()" class="text-sm text-[#bcc7de] hover:text-[#4be277] transition-colors py-1 font-mono">
+      <span class="text-[#4be277] mr-2">&gt;_</span><span data-i18n="nav.assistant">Assistant</span>
     </a>
     <a href="#contact" onclick="closeMenu()"
        class="inline-flex items-center justify-center px-5 py-2 rounded-sm font-bold text-sm text-[#002109] mt-2 bg-gradient-to-br from-[#4be277] to-[#22c55e]"
@@ -413,13 +417,59 @@
   </div>
 </section>
 
+<!-- ASSISTANT SECTION -->
+<section id="assistant" class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[#0d1629]"></div>
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 font-mono text-[18rem] font-black text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.018" aria-hidden="true">AI</div>
+  <div class="max-w-3xl mx-auto px-6 relative z-10">
+
+    <!-- Header -->
+    <div class="flex items-center gap-6 mb-12 fade-up">
+      <span class="font-mono text-xs text-[#4be277] tracking-widest uppercase" data-i18n="section.assistant">05_ASSISTANT</span>
+      <div class="h-px flex-grow bg-[#3d4a3d]/20"></div>
+      <h2 class="text-3xl md:text-4xl font-black tracking-tighter text-[#dae2fd] whitespace-nowrap" data-i18n="assistant.title">Ask me anything</h2>
+    </div>
+
+    <p class="text-sm text-[#64748b] font-mono mb-8 fade-up delay-100" data-i18n="assistant.subtitle">Powered by AI · Answers about Andy, his work, and projects</p>
+
+    <!-- Quick questions -->
+    <div id="quick-questions" class="flex flex-wrap gap-2 mb-6 fade-up delay-200"></div>
+
+    <!-- Chat window -->
+    <div id="chat-window"
+         class="bg-[#131b2e] ghost-border rounded-sm mb-4 overflow-y-auto fade-up delay-300"
+         style="min-height:220px;max-height:420px">
+      <div id="chat-messages" class="p-5 flex flex-col gap-4"></div>
+    </div>
+
+    <!-- Input row -->
+    <div class="flex gap-2 fade-up delay-400">
+      <input id="chat-input" type="text"
+             data-i18n-placeholder="assistant.placeholder"
+             placeholder="Ask something about Andy..."
+             class="flex-1 bg-[#131b2e] ghost-border rounded-sm px-4 py-3 text-sm text-[#dae2fd] font-mono placeholder-[#3d4a5d] focus:outline-none focus:border-[#4be277]/40 transition-colors" />
+      <button id="chat-send"
+              onclick="sendMessage()"
+              class="px-5 py-3 rounded-sm font-bold text-[#002109] text-sm transition-all hover:-translate-y-0.5 shrink-0"
+              style="background:linear-gradient(135deg,#4be277,#22c55e)">
+        <iconify-icon icon="mdi:send" style="font-size:1.1rem"></iconify-icon>
+      </button>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="font-mono text-[10px] text-[#3d4a5d] mt-3 text-center fade-up delay-500" data-i18n="assistant.disclaimer">
+      AI responses may not be 100% accurate. For important matters, contact Andy directly.
+    </p>
+  </div>
+</section>
+
 <!-- CONTACT SECTION -->
 <section id="contact" class="py-24 relative overflow-hidden">
   <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center font-black text-[20rem] text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.015" aria-hidden="true">&gt;_</div>
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="bg-[#131b2e] ghost-border rounded-sm p-12 md:p-20 text-center relative overflow-hidden fade-up">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-[2px] bg-gradient-to-r from-transparent via-[#4be277] to-transparent"></div>
-      <div class="font-mono text-xs text-[#4be277] tracking-widest uppercase mb-8" data-i18n="section.contact">05_CONTACT</div>
+      <div class="font-mono text-xs text-[#4be277] tracking-widest uppercase mb-8" data-i18n="section.contact">06_CONTACT</div>
       <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-[#dae2fd] mb-4">
         <span data-i18n="contact.title">Let's build something</span>
         <span class="gradient-text" data-i18n="contact.highlight"> meaningful</span><br />
@@ -549,9 +599,27 @@
       'section.about':      '02_ABOUT',
       'section.projects':   '03_PROJECTS',
       'section.stack':      '04_STACK',
-      'section.contact':    '05_CONTACT',
+      'section.assistant':  '05_ASSISTANT',
+      'section.contact':    '06_CONTACT',
       'project.featured':   'Featured',
       'project.visit':      'Visit Website',
+
+      // ── ASSISTANT ──
+      'nav.assistant':          'Assistant',
+      'assistant.title':        'Ask me anything',
+      'assistant.subtitle':     'Powered by AI · Answers about Andy, his work, and projects',
+      'assistant.placeholder':  'Ask something about Andy...',
+      'assistant.disclaimer':   'AI responses may not be 100% accurate. For important matters, contact Andy directly.',
+      'assistant.thinking':     'Thinking...',
+      'assistant.error':        'Something went wrong. Try again in a moment.',
+      'assistant.no_key':       'API key not configured. Add it to config.js.',
+      'assistant.greeting':     "Hi! I'm Andy's virtual assistant. Ask me about his experience, projects, skills, or how to get in touch.",
+      'assistant.questions': [
+        "What does Andy specialize in?",
+        "What projects has he built?",
+        "What's his work experience?",
+        "How can I contact Andy?",
+      ],
     },
 
     es: {
@@ -621,9 +689,27 @@
       'section.about':      '02_SOBRE_MÍ',
       'section.projects':   '03_PROYECTOS',
       'section.stack':      '04_STACK',
-      'section.contact':    '05_CONTACTO',
+      'section.assistant':  '05_ASISTENTE',
+      'section.contact':    '06_CONTACTO',
       'project.featured':   'Destacado',
       'project.visit':      'Ver sitio web',
+
+      // ── ASSISTANT ──
+      'nav.assistant':          'Asistente',
+      'assistant.title':        'Pregúntame lo que quieras',
+      'assistant.subtitle':     'Impulsado por IA · Responde sobre Andy, su trabajo y proyectos',
+      'assistant.placeholder':  'Pregunta algo sobre Andy...',
+      'assistant.disclaimer':   'Las respuestas de la IA pueden no ser 100% precisas. Para temas importantes, contacta a Andy directamente.',
+      'assistant.thinking':     'Pensando...',
+      'assistant.error':        'Algo salió mal. Inténtalo de nuevo en un momento.',
+      'assistant.no_key':       'API key no configurada. Agrégala en config.js.',
+      'assistant.greeting':     "¡Hola! Soy el asistente virtual de Andy. Pregúntame sobre su experiencia, proyectos, habilidades o cómo contactarlo.",
+      'assistant.questions': [
+        "¿En qué se especializa Andy?",
+        "¿Qué proyectos ha construido?",
+        "¿Cuál es su experiencia laboral?",
+        "¿Cómo puedo contactar a Andy?",
+      ],
     },
   };
 
@@ -750,13 +836,17 @@
      - data-i18n-html  → innerHTML    (admite spans, tags, etc.)
      ────────────────────────────────────────────────────────────────────────────── */
   function applyLang() {
-    // Texto plano
+    // Plain text
     document.querySelectorAll('[data-i18n]').forEach(el => {
       el.textContent = T(el.dataset.i18n);
     });
-    // Con HTML interno
+    // HTML content
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       el.innerHTML = T(el.dataset.i18nHtml);
+    });
+    // Placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      el.placeholder = T(el.dataset.i18nPlaceholder);
     });
 
     document.getElementById('btn-en').className = lang === 'en' ? 'text-[#4be277]' : '';
@@ -766,6 +856,7 @@
     renderProjects();
     renderSkills();
     renderExperience();
+    renderQuickQuestions();
   }
 
   function toggleLang() { lang = lang === 'en' ? 'es' : 'en'; applyLang(); }
@@ -959,7 +1050,512 @@
     renderExperience();
     applyLang();
     triggerObserver();
+    initAssistant();
+
+    // Enter key sends message
+    document.getElementById('chat-input')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+    });
   });
+
+  /* ──────────────────────────────────────────────────────────────────────────────
+     ASSISTANT — Chat with OpenRouter
+     ────────────────────────────────────────────────────────────────────────────── */
+const SYSTEM_PROMPT = `Eres el asistente virtual del portafolio de Andy Clemente Gago. Tu ÚNICA función es responder preguntas sobre Andy basándote ESTRICTAMENTE en la información proporcionada a continuación.
+
+## REGLAS ESTRICTAS (INCUMPLIRLAS ES PROHIBIDO):
+1. SOLO responde preguntas sobre Andy Clemente Gago.
+2. Si te preguntan sobre cualquier otro tema (política, deportes, clima, programación en general, etc.), responde: "Lo siento, solo puedo responder preguntas sobre Andy Clemente. ¿Te gustaría saber sobre su experiencia, proyectos o formación?"
+3. NO inventes información. Si no encuentras la respuesta en los datos, di: "No tengo esa información en mi base de datos. Puedes contactar a Andy directamente a ing.andyclemente@gmail.com"
+4. Responde en el MISMO IDIOMA que te pregunte el usuario (español o inglés).
+5. Sé conciso, amigable y profesional. Usa máximo 3 oraciones por respuesta.
+
+## === INFORMACIÓN EXCLUSIVA SOBRE ANDY CLEMENTE GAGO ===
+
+### DATOS PERSONALES
+- Nombre completo: Andy Clemente Gago
+- Ubicación: La Habana, Cuba
+- Título: Ingeniero Informático / Software Engineer
+- Especialidades: Inteligencia Artificial, desarrollo Fullstack, aplicaciones móviles con Flutter
+- Email: ing.andyclemente@gmail.com
+- Teléfono: +53 55847601
+- GitHub: https://github.com/AndyCG03
+- LinkedIn: https://www.linkedin.com/in/andy-clemente-gago-7590362a4
+
+### FORMACIÓN ACADÉMICA
+- Carrera: Ingeniería Informática en CUJAE (Universidad Tecnológica de La Habana)
+- Período: Feb 2023 - Mar 2026 (4to año, cursando actualmente)
+- Índice Académico: 4.50
+- Cursos adicionales: 2 años como Alumno Ayudante (AA), 1 año como Asistente Técnico en Docencia (ATD)
+
+### EXPERIENCIA LABORAL
+1. BioCubaFarma (ETI) - Programador Técnico (Mar 2025 - Presente)
+   - Lidera desarrollo de plataforma unificada para asistentes virtuales con arquitectura RAG
+   - Stack: FastAPI con JWT, ChromaDB, procesamiento PDF/DOCX, Whisper
+   - Delegado en SIGESTIC 2025
+
+2. Medialytic - Programador Mobile (Nov 2024 - Jun 2025)
+   - Formación en Flutter, Dart, Provider y APIs REST
+   - Desarrolló "El Chismoso" (app con GPS y carga de fotos)
+
+3. CUJAE - Profesor Auxiliar (Mar 2025 - Mar 2026)
+   - Impartió Programación Introductoria (C) y Programación Orientada a Objetos (Java)
+   - Ayudó a 30+ estudiantes por grupo
+
+### PROYECTOS PRINCIPALES
+- devisistore: Plataforma de catálogos digitales (Node.js, Express, SQLite)
+- ai-api-service: API FastAPI para servicios IA (Whisper, OCR, embeddings RAG)
+- backend-smart-task: Backend para tickets con IA
+- biocu: Plataforma Flutter + NestJS para reportes ambientales
+- al_toque_app: App Flutter para tasas de cambio en Cuba
+- VidCrush Pro: Compresor de video con FFmpeg
+
+### HABILIDADES TÉCNICAS
+- Mobile: Flutter, Dart, Provider, Android Studio
+- IA/Backend: FastAPI, Python, RAG, NestJS, Whisper
+- Lenguajes: Java, C, JavaScript, TypeScript, Vue.js
+- Bases de datos: PostgreSQL, MySQL, SQLite, ChromaDB
+- Herramientas: Git, GitHub, VS Code, LaTeX, FFmpeg
+
+### LOGROS Y COMPETICIONES
+- 3 participaciones en clasificatoria ICPC Caribbean Finals (mejor ranking: #37 en el Caribe)
+- Publicación en RENIA: "Prototipo de Casa de Cultivo Inteligente"
+- Hackathones UNESCO 2024 y 2025
+- AVANCODE 2025
+- Global Game Jam 2025
+- Distinciones: Premio Ábaco, trabajo Relevante en JCE de Automática (2 veces)
+- 2do lugar en Examen de Premio de Ingeniería de Requisitos
+- Medallas de Bronce y Plata en Festival de Cultura (2023-2025)
+
+### RESPONSABILIDADES Y LIDERAZGO
+- Vicepresidente y Comunicador en Secretariado FEU (2023-2025)
+- Jefe de Comunicación de Revista RENIA (2024-2025)
+- Organizador de Gaming Cujae 2023 y eventos de facultad
+
+### EXTRACURRICULAR
+- Excursionismo: participante en V edición del Pico Turquino Cujae UH
+- Deportes: campeón de futsal en Juegos Interaños 2024 y 2025
+- Fotografía: mención en concurso "Patrimonio Cujaeño"
+- Donante de sangre voluntario
+- Creador de curso online para preuniversitarios
+
+### IDIOMAS
+- Español: nativo
+- Inglés: nivel básico (A2)
+
+### FRASE DE CIERRE
+Si el usuario se despide o agradece, responde cordialmente. Siempre mantén el enfoque en Andy.
+
+### RESPUESTA POR DEFECTO SI NO HAY DATOS
+"Disculpa, no encontré esa información específica sobre Andy. Para más detalles, escríbele directamente a ing.andyclemente@gmail.com"`;
+
+  let chatHistory = [];
+
+  function initAssistant() {
+    renderQuickQuestions();
+    addBotMessage(T('assistant.greeting'));
+  }
+
+  // ============================================================
+// FAQS CON RESPUESTAS PREDEFINIDAS (sin usar el modelo)
+// ============================================================
+
+// ============================================================
+// FAQS CON SELECTOR POR CATEGORÍAS (TABS)
+// ============================================================
+
+let currentFaqCategory = 0;
+
+const faqsData = {
+  en: [
+    {
+      id: 0,
+      name: "🎓 Education",
+      icon: "school",
+      questions: [
+        {
+          text: "What is Andy's academic background?",
+          answer: "Andy is studying Software Engineering at CUJAE (Havana, Cuba), expected graduation March 2026. He has a 4.50 GPA and serves as Teaching Assistant for Programming (C) and OOP (Java)."
+        },
+        {
+          text: "What is his GPA?",
+          answer: "Andy has an academic index of 4.50 (on a 5-point scale)."
+        },
+        {
+          text: "What courses does he teach?",
+          answer: "He teaches Introduction to Programming (C language) and Object-Oriented Programming (Java) as a Teaching Assistant at CUJAE."
+        }
+      ]
+    },
+    {
+      id: 1,
+      name: "💼 Experience",
+      icon: "work",
+      questions: [
+        {
+          text: "Where does Andy work currently?",
+          answer: "Andy works at BioCubaFarma (ETI) as a Technical Programmer since March 2025, leading RAG-based virtual assistants platform development with FastAPI, JWT, ChromaDB and Whisper."
+        },
+        {
+          text: "What did he do at Medialytic?",
+          answer: "At Medialytic (Nov 2024 - Jun 2025), he trained in Flutter/Dart and built 'El Chismoso', an app with GPS location and photo upload for community reporting."
+        },
+        {
+          text: "What was his role as Teaching Assistant?",
+          answer: "At CUJAE (Mar 2025 - Mar 2026), he taught Introduction to Programming (C) and OOP (Java) to 30+ students per group."
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: "🚀 Projects",
+      icon: "code",
+      questions: [
+        {
+          text: "What are his main projects?",
+          answer: "His main projects include: devisistore (digital catalog platform), ai-api-service (FastAPI for AI services), biocu (Flutter environmental reporting), al_toque_app (Cuba currency exchange), and VidCrush Pro (video compressor)."
+        },
+        {
+          text: "How can I see his projects?",
+          answer: "All Andy's projects are on GitHub: https://github.com/AndyCG03. You can also check devisistore.devisisoft.com for a live demo."
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: "🏆 Achievements",
+      icon: "emoji_events",
+      questions: [
+        {
+          text: "What competitions has he participated in?",
+          answer: "Andy participated 3x in ICPC Caribbean Finals (best rank #37), UNESCO hackathons 2024 & 2025, AVANCODE 2025, and Global Game Jam 2025."
+        },
+        {
+          text: "Has he published any research?",
+          answer: "Yes, he published 'Smart Greenhouse Prototype' in RENIA (National Student Journal of Engineering and Architecture)."
+        },
+        {
+          text: "What awards has he won?",
+          answer: "He won: Premio Ábaco, Relevant Work at JCE of Automation (twice), 2nd place in Requirements Engineering Exam, and Bronze/Silver medals in Culture Festival."
+        }
+      ]
+    },
+    {
+      id: 4,
+      name: "🛠️ Skills",
+      icon: "build",
+      questions: [
+        {
+          text: "What technologies does Andy use?",
+          answer: "Mobile: Flutter, Dart. AI/Backend: FastAPI, Python, RAG, Whisper. Languages: Java, C, JavaScript, TypeScript, Vue.js. Databases: PostgreSQL, MySQL, SQLite, ChromaDB."
+        },
+        {
+          text: "Does he know Flutter?",
+          answer: "Yes, Andy has extensive Flutter experience including Provider state management and REST API integration. He built several production apps with it."
+        }
+      ]
+    },
+    {
+      id: 5,
+      name: "📞 Contact",
+      icon: "mail",
+      questions: [
+        {
+          text: "How can I contact Andy?",
+          answer: "Email: ing.andyclemente@gmail.com | Phone: +53 55847601 | LinkedIn: /in/andy-clemente-gago-7590362a4"
+        },
+        {
+          text: "Is he open to work?",
+          answer: "Yes! Andy is open to freelance projects, collaborations, and job opportunities. Contact him directly via email or LinkedIn."
+        }
+      ]
+    }
+  ],
+  es: [
+    {
+      id: 0,
+      name: "🎓 Educación",
+      icon: "school",
+      questions: [
+        {
+          text: "¿Cuál es la formación académica de Andy?",
+          answer: "Andy estudia Ingeniería Informática en CUJAE (La Habana, Cuba), graduación esperada marzo 2026. Tiene promedio 4.50 y es Profesor Auxiliar de Programación (C) y POO (Java)."
+        },
+        {
+          text: "¿Qué promedio tiene?",
+          answer: "Andy tiene un índice académico de 4.50 (escala 5 puntos)."
+        },
+        {
+          text: "¿Qué materias enseña?",
+          answer: "Enseña Programación Introductoria (lenguaje C) y Programación Orientada a Objetos (Java) como Profesor Auxiliar en CUJAE."
+        }
+      ]
+    },
+    {
+      id: 1,
+      name: "💼 Experiencia",
+      icon: "work",
+      questions: [
+        {
+          text: "¿Dónde trabaja Andy actualmente?",
+          answer: "Andy trabaja en BioCubaFarma (ETI) como Programador Técnico desde marzo 2025, liderando plataforma de asistentes virtuales RAG con FastAPI, JWT, ChromaDB y Whisper."
+        },
+        {
+          text: "¿Qué hizo en Medialytic?",
+          answer: "En Medialytic (nov 2024 - jun 2025), se formó en Flutter/Dart y desarrolló 'El Chismoso', una app con geolocalización y carga de fotos para reportes comunitarios."
+        },
+        {
+          text: "¿Cuál fue su rol como Profesor Auxiliar?",
+          answer: "En CUJAE (mar 2025 - mar 2026), impartió Programación Introductoria (C) y POO (Java) a más de 30 estudiantes por grupo."
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: "🚀 Proyectos",
+      icon: "code",
+      questions: [
+        {
+          text: "¿Cuáles son sus proyectos principales?",
+          answer: "Sus proyectos principales: devisistore (catálogos digitales), ai-api-service (FastAPI para IA), biocu (Flutter reportes ambientales), al_toque_app (tasas de cambio Cuba), y VidCrush Pro (compresor de video)."
+        },
+        {
+          text: "¿Cómo puedo ver sus proyectos?",
+          answer: "Todos los proyectos de Andy están en GitHub: https://github.com/AndyCG03. También puedes ver devisistore.devisisoft.com para una demo en vivo."
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: "🏆 Logros",
+      icon: "emoji_events",
+      questions: [
+        {
+          text: "¿En qué competencias ha participado?",
+          answer: "Andy participó 3 veces en la ICPC Final del Caribe (mejor ranking #37), hackathones UNESCO 2024 y 2025, AVANCODE 2025, y Global Game Jam 2025."
+        },
+        {
+          text: "¿Ha publicado alguna investigación?",
+          answer: "Sí, publicó 'Prototipo de Casa de Cultivo Inteligente' en RENIA (Revista Estudiantil Nacional de Ingeniería y Arquitectura)."
+        },
+        {
+          text: "¿Qué premios ha ganado?",
+          answer: "Ganó: Premio Ábaco, Trabajo Relevante en JCE de Automática (dos veces), 2do lugar en Examen de Premio de Ingeniería de Requisitos, y medallas de Bronce/Plata en Festival de Cultura."
+        }
+      ]
+    },
+    {
+      id: 4,
+      name: "🛠️ Habilidades",
+      icon: "build",
+      questions: [
+        {
+          text: "¿Qué tecnologías usa Andy?",
+          answer: "Mobile: Flutter, Dart. IA/Backend: FastAPI, Python, RAG, Whisper. Lenguajes: Java, C, JavaScript, TypeScript, Vue.js. Bases de datos: PostgreSQL, MySQL, SQLite, ChromaDB."
+        },
+        {
+          text: "¿Sabe Flutter?",
+          answer: "Sí, Andy tiene amplia experiencia en Flutter incluyendo Provider y APIs REST. Ha construido varias apps en producción con él."
+        }
+      ]
+    },
+    {
+      id: 5,
+      name: "📞 Contacto",
+      icon: "mail",
+      questions: [
+        {
+          text: "¿Cómo puedo contactar a Andy?",
+          answer: "Email: ing.andyclemente@gmail.com | Teléfono: +53 55847601 | LinkedIn: /in/andy-clemente-gago-7590362a4"
+        },
+        {
+          text: "¿Está abierto a trabajar?",
+          answer: "¡Sí! Andy está abierto a proyectos freelance, colaboraciones y oportunidades laborales. Contáctalo directamente por email o LinkedIn."
+        }
+      ]
+    }
+  ]
+};
+
+function renderQuickQuestions() {
+  const container = document.getElementById('quick-questions');
+  if (!container) return;
+  
+  const data = faqsData[lang];
+  
+  // Generar tabs
+  let tabsHtml = `<div class="flex flex-wrap gap-1 mb-3 border-b border-[#2d3449] pb-2">`;
+  data.forEach((category, idx) => {
+    tabsHtml += `
+      <button onclick="switchFaqCategory(${idx})"
+              class="tab-btn-${idx} px-3 py-1.5 rounded-t-md font-mono text-xs transition-all ${idx === currentFaqCategory ? 'bg-[#4be277] text-[#002109]' : 'text-[#64748b] hover:text-[#4be277] hover:bg-[#4be277]/10'}">
+        ${category.name}
+      </button>
+    `;
+  });
+  tabsHtml += `</div>`;
+  
+  // Generar preguntas de la categoría actual
+  const currentCategory = data[currentFaqCategory];
+  let questionsHtml = `<div class="flex flex-wrap gap-2" id="faq-questions-container">`;
+  currentCategory.questions.forEach(q => {
+    questionsHtml += `
+      <button onclick="askQuickWithAnswer('${q.text.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')"
+              class="px-3 py-1.5 rounded-sm bg-[#131b2e] ghost-border font-mono text-xs text-[#4be277] hover:bg-[#4be277]/10 transition-all text-left">
+        ${q.text}
+      </button>
+    `;
+  });
+  questionsHtml += `</div>`;
+  
+  container.innerHTML = tabsHtml + questionsHtml;
+}
+
+function switchFaqCategory(categoryId) {
+  currentFaqCategory = categoryId;
+  renderQuickQuestions();
+}
+
+function askQuickWithAnswer(questionText, predefAnswer) {
+  // const input = document.getElementById('chat-input');
+  // input.value = questionText;
+  
+  // Agregar mensaje del usuario
+  addUserMessage(questionText);
+  
+  // Agregar respuesta predefinida del bot (sin llamar a la API)
+  setTimeout(() => {
+    addBotMessage(predefAnswer);
+  }, 100);
+}
+
+  function askQuick(btn) {
+    const q = btn.textContent.trim();
+    document.getElementById('chat-input').value = q;
+    sendMessage();
+  }
+
+  function addBotMessage(text, isError = false) {
+    const msgs = document.getElementById('chat-messages');
+    if (!msgs) return;
+    const div = document.createElement('div');
+    div.className = 'flex gap-3 items-start';
+    div.innerHTML = `
+      <div class="w-7 h-7 rounded-sm bg-[#4be277]/15 border border-[#4be277]/20 flex items-center justify-center shrink-0 mt-0.5">
+        <iconify-icon icon="mdi:robot-outline" style="color:#4be277;font-size:0.9rem"></iconify-icon>
+      </div>
+      <div class="flex-1 text-sm text-[#bcc7de] leading-relaxed font-sans ${isError ? 'text-red-400' : ''}"
+           style="white-space:pre-wrap">${text}</div>
+    `;
+    msgs.appendChild(div);
+    scrollChat();
+  }
+
+  function addUserMessage(text) {
+    const msgs = document.getElementById('chat-messages');
+    if (!msgs) return;
+    const div = document.createElement('div');
+    div.className = 'flex gap-3 items-start justify-end';
+    div.innerHTML = `
+      <div class="max-w-[80%] px-4 py-2.5 rounded-sm text-sm text-[#002109] font-sans leading-relaxed"
+           style="background:linear-gradient(135deg,#4be277,#22c55e)">${text}</div>
+      <div class="w-7 h-7 rounded-sm bg-[#2d3449] flex items-center justify-center shrink-0 mt-0.5">
+        <iconify-icon icon="mdi:account" style="color:#dae2fd;font-size:0.9rem"></iconify-icon>
+      </div>
+    `;
+    msgs.appendChild(div);
+    scrollChat();
+  }
+
+  function addThinkingBubble() {
+    const msgs = document.getElementById('chat-messages');
+    if (!msgs) return;
+    const div = document.createElement('div');
+    div.id = 'thinking-bubble';
+    div.className = 'flex gap-3 items-start';
+    div.innerHTML = `
+      <div class="w-7 h-7 rounded-sm bg-[#4be277]/15 border border-[#4be277]/20 flex items-center justify-center shrink-0 mt-0.5">
+        <iconify-icon icon="mdi:robot-outline" style="color:#4be277;font-size:0.9rem"></iconify-icon>
+      </div>
+      <div class="flex items-center gap-1.5 py-2">
+        <span class="w-2 h-2 rounded-full bg-[#4be277] animate-bounce" style="animation-delay:0ms"></span>
+        <span class="w-2 h-2 rounded-full bg-[#4be277] animate-bounce" style="animation-delay:150ms"></span>
+        <span class="w-2 h-2 rounded-full bg-[#4be277] animate-bounce" style="animation-delay:300ms"></span>
+      </div>
+    `;
+    msgs.appendChild(div);
+    scrollChat();
+  }
+
+  function removeThinkingBubble() {
+    document.getElementById('thinking-bubble')?.remove();
+  }
+
+  function scrollChat() {
+    const win = document.getElementById('chat-window');
+    if (win) win.scrollTop = win.scrollHeight;
+  }
+
+  // Reemplaza la función sendMessage() completa con esta versión:
+async function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send');
+    const text = input?.value?.trim();
+    
+    if (!text) return;
+
+    input.value = '';
+    input.disabled = true;
+    sendBtn.disabled = true;
+    sendBtn.style.opacity = '0.5';
+
+    addUserMessage(text);
+    chatHistory.push({ role: 'user', content: text });
+    addThinkingBubble();
+
+    try {
+        const response = await fetch('/api/assistant', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                messages: [
+                    { role: 'system', content: SYSTEM_PROMPT },
+                    ...chatHistory.slice(-8)
+                ],
+                model: 'openrouter/free' // ✅ CAMBIADO A GRATIS
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || data.error) {
+            throw new Error(data.error || `Error ${response.status}`);
+        }
+
+        const reply = data.choices?.[0]?.message?.content;
+        
+        if (!reply) {
+            throw new Error('Respuesta vacía del asistente');
+        }
+
+        removeThinkingBubble();
+        addBotMessage(reply);
+        chatHistory.push({ role: 'assistant', content: reply });
+
+    } catch (error) {
+        console.error('Error:', error);
+        removeThinkingBubble();
+        addBotMessage(`❌ ${T('assistant.error')}`, true);
+        chatHistory.pop();
+    } finally {
+        input.disabled = false;
+        sendBtn.disabled = false;
+        sendBtn.style.opacity = '1';
+        input.focus();
+    }
+}
 </script>
 </body>
 </html>
