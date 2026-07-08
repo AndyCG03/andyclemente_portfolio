@@ -333,7 +333,7 @@
         <h2 class="text-3xl md:text-4xl font-black tracking-tighter text-[#dae2fd] mb-12 fade-right delay-100" data-i18n="experience.education">Education</h2>
         <div class="bg-[#131b2e] ghost-border rounded-sm p-8 mb-8 relative overflow-hidden fade-up delay-300">
           <div class="absolute top-4 right-4 font-mono text-[6rem] font-black text-[#4be277] select-none pointer-events-none leading-none" style="opacity:0.05" aria-hidden="true">A</div>
-          <span class="font-mono text-xs text-[#4be277] tracking-widest block mb-4">Feb 2023 — Mar 2026</span>
+          <span class="font-mono text-xs text-[#4be277] tracking-widest block mb-4">Feb 2023 — Jul 2026</span>
           <h3 class="text-2xl font-black text-[#dae2fd] mb-1" data-i18n="edu.degree">Software Engineer</h3>
           <p class="font-mono text-sm text-[#64748b] mb-4">CUJAE · <span data-i18n="edu.location">Havana, Cuba</span></p>
           <p class="text-sm text-[#bcc7de] leading-relaxed" data-i18n="experience.edu.desc"></p>
@@ -779,21 +779,30 @@
      ────────────────────────────────────────────────────────────────────────────── */
   const experiences = [
     {
-      period: { en: 'Mar 2025 — Present', es: 'Mar 2025 — Actualidad' },
-      company: 'BioCubaFarma (ETI)',
-      role: { en: 'Technical Programmer', es: 'Programador Técnico' },
+      period: { en: 'Aug 2025 — Present', es: 'Ago 2025 — Actualidad' },
+      company: 'Devisi',
+      role: { en: 'Co-founder', es: 'Co-fundador' },
       desc: {
-        en: "Leading development of a unified platform for multiple virtual assistants using RAG architecture. Stack: FastAPI with JWT auth, ChromaDB for vector search, PDF/DOCX processing, and Whisper for audio. Presented the project as a delegate at SIGESTIC 2025.",
-        es: "Liderando el desarrollo de una plataforma unificada para múltiples asistentes virtuales con arquitectura RAG. Stack: FastAPI con autenticación JWT, ChromaDB para búsqueda vectorial, procesamiento de PDF/DOCX e integración con Whisper. Presenté el proyecto como delegado en SIGESTIC 2025.",
+        en: "My own software development venture, building digital products end to end — from architecture to deployment — for real clients.",
+        es: "Mi propio emprendimiento de desarrollo de soluciones informáticas, construyendo productos digitales de punta a punta — desde la arquitectura hasta el despliegue — para clientes reales.",
       },
     },
     {
-      period: { en: 'Nov 2024 — Jun 2025', es: 'Nov 2024 — Jun 2025' },
-      company: 'Medialytic',
-      role: { en: 'Mobile Programmer', es: 'Programador Mobile' },
+      period: { en: 'Apr 2026 — Jun 2026', es: 'Abr 2026 — Jun 2026' },
+      company: 'By ONTOP',
+      role: { en: 'WordPress Developer', es: 'Desarrollador WordPress' },
       desc: {
-        en: "Intensive Flutter training covering Dart, Provider, and REST API integration. Built 'El Chismoso' — a Flutter app with GPS location and photo upload for community reporting.",
-        es: "Formación intensiva en Flutter: Dart, Provider e integración con APIs REST. Desarrollé 'El Chismoso' — app Flutter con geolocalización y carga de fotos para reportes comunitarios.",
+        en: "Developed and maintained WordPress websites and created content for social media channels.",
+        es: "Desarrollo y mantenimiento de páginas web en WordPress y creación de contenido para redes sociales.",
+      },
+    },
+    {
+      period: { en: 'Feb 2025 — Jun 2026', es: 'Feb 2025 — Jun 2026' },
+      company: 'eti_tecnologías',
+      role: { en: 'Technical Programmer', es: 'Programador Técnico' },
+      desc: {
+        en: "Led development of a unified platform for multiple virtual assistants using RAG architecture. Stack: FastAPI with JWT auth, ChromaDB for vector search, PDF/DOCX processing, and Whisper for audio. Presented the project as a delegate at SIGESTIC 2025.",
+        es: "Lideré el desarrollo de una plataforma unificada para múltiples asistentes virtuales con arquitectura RAG. Stack: FastAPI con autenticación JWT, ChromaDB para búsqueda vectorial, procesamiento de PDF/DOCX e integración con Whisper. Presenté el proyecto como delegado en SIGESTIC 2025.",
       },
     },
     {
@@ -803,6 +812,15 @@
       desc: {
         en: "Taught Introductory Programming (C) to 1st semester Computer Engineering students and Object Oriented Programming (Java) to 2nd semester students. Consistently helped 30+ students per group get through the hardest subjects of their first year. Participated in the ICPC Caribbean Finals qualifier three times, in UNESCO hackathons (2024, 2025), and competed in Global Game Jam 2025.",
         es: "Impartí Programación Introductoria (C) a estudiantes de 1er semestre de Ingeniería en Computación y Programación Orientada a Objetos (Java) a estudiantes de 2do semestre. Ayudé a más de 30 estudiantes por grupo a superar las asignaturas más difíciles de su primer año. Participé tres veces en la clasificatoria de la Final del Caribe de la ICPC, en hackathones de la UNESCO (2024, 2025) y competí en la Global Game Jam 2025.",
+      },
+    },
+    {
+      period: { en: 'Nov 2024 — Jun 2025', es: 'Nov 2024 — Jun 2025' },
+      company: 'Medialytic',
+      role: { en: 'Mobile Programmer', es: 'Programador Mobile' },
+      desc: {
+        en: "Intensive Flutter training covering Dart, Provider, and REST API integration. Built 'El Chismoso' — a Flutter app with GPS location and photo upload for community reporting.",
+        es: "Formación intensiva en Flutter: Dart, Provider e integración con APIs REST. Desarrollé 'El Chismoso' — app Flutter con geolocalización y carga de fotos para reportes comunitarios.",
       },
     },
   ];
@@ -1084,23 +1102,30 @@ const SYSTEM_PROMPT = `Eres el asistente virtual del portafolio de Andy Clemente
 
 ### FORMACIÓN ACADÉMICA
 - Carrera: Ingeniería Informática en CUJAE (Universidad Tecnológica de La Habana)
-- Período: Feb 2023 - Mar 2026 (4to año, cursando actualmente)
+- Período: Feb 2023 - Jul 2026 (graduado)
 - Índice Académico: 4.50
 - Cursos adicionales: 2 años como Alumno Ayudante (AA), 1 año como Asistente Técnico en Docencia (ATD)
 
 ### EXPERIENCIA LABORAL
-1. BioCubaFarma (ETI) - Programador Técnico (Mar 2025 - Presente)
-   - Lidera desarrollo de plataforma unificada para asistentes virtuales con arquitectura RAG
+1. Devisi - Co-fundador (Ago 2025 - Presente)
+   - Emprendimiento propio de desarrollo de soluciones informáticas
+
+2. By ONTOP - Desarrollador WordPress (Abr 2026 - Jun 2026)
+   - Desarrollo y mantenimiento de páginas web en WordPress
+   - Creación de contenido para redes sociales
+
+3. eti_tecnologías - Programador Técnico (Feb 2025 - Jun 2026)
+   - Lideró desarrollo de plataforma unificada para asistentes virtuales con arquitectura RAG
    - Stack: FastAPI con JWT, ChromaDB, procesamiento PDF/DOCX, Whisper
    - Delegado en SIGESTIC 2025
 
-2. Medialytic - Programador Mobile (Nov 2024 - Jun 2025)
-   - Formación en Flutter, Dart, Provider y APIs REST
-   - Desarrolló "El Chismoso" (app con GPS y carga de fotos)
-
-3. CUJAE - Profesor Auxiliar (Mar 2025 - Mar 2026)
+4. CUJAE - Profesor Auxiliar (Mar 2025 - Mar 2026)
    - Impartió Programación Introductoria (C) y Programación Orientada a Objetos (Java)
    - Ayudó a 30+ estudiantes por grupo
+
+5. Medialytic - Programador Mobile (Nov 2024 - Jun 2025)
+   - Formación en Flutter, Dart, Provider y APIs REST
+   - Desarrolló "El Chismoso" (app con GPS y carga de fotos)
 
 ### PROYECTOS PRINCIPALES
 - devisistore: Plataforma de catálogos digitales (Node.js, Express, SQLite)
@@ -1175,7 +1200,7 @@ const faqsData = {
       questions: [
         {
           text: "What is Andy's academic background?",
-          answer: "Andy is studying Software Engineering at CUJAE (Havana, Cuba), expected graduation March 2026. He has a 4.50 GPA and serves as Teaching Assistant for Programming (C) and OOP (Java)."
+          answer: "Andy graduated as a Software Engineer from CUJAE (Havana, Cuba) in July 2026. He has a 4.50 GPA and served as Teaching Assistant for Programming (C) and OOP (Java)."
         },
         {
           text: "What is his GPA?",
@@ -1194,7 +1219,7 @@ const faqsData = {
       questions: [
         {
           text: "Where does Andy work currently?",
-          answer: "Andy works at BioCubaFarma (ETI) as a Technical Programmer since March 2025, leading RAG-based virtual assistants platform development with FastAPI, JWT, ChromaDB and Whisper."
+          answer: "Andy is the co-founder of Devisi, his own software development venture, since August 2025. He previously led RAG-based virtual assistants platform development at eti_tecnologías with FastAPI, JWT, ChromaDB and Whisper."
         },
         {
           text: "What did he do at Medialytic?",
@@ -1279,7 +1304,7 @@ const faqsData = {
       questions: [
         {
           text: "¿Cuál es la formación académica de Andy?",
-          answer: "Andy estudia Ingeniería Informática en CUJAE (La Habana, Cuba), graduación esperada marzo 2026. Tiene promedio 4.50 y es Profesor Auxiliar de Programación (C) y POO (Java)."
+          answer: "Andy se graduó como Ingeniero Informático en CUJAE (La Habana, Cuba) en julio de 2026. Tiene promedio 4.50 y fue Profesor Auxiliar de Programación (C) y POO (Java)."
         },
         {
           text: "¿Qué promedio tiene?",
@@ -1298,7 +1323,7 @@ const faqsData = {
       questions: [
         {
           text: "¿Dónde trabaja Andy actualmente?",
-          answer: "Andy trabaja en BioCubaFarma (ETI) como Programador Técnico desde marzo 2025, liderando plataforma de asistentes virtuales RAG con FastAPI, JWT, ChromaDB y Whisper."
+          answer: "Andy es co-fundador de Devisi, su propio emprendimiento de desarrollo de software, desde agosto de 2025. Antes lideró una plataforma de asistentes virtuales RAG en eti_tecnologías con FastAPI, JWT, ChromaDB y Whisper."
         },
         {
           text: "¿Qué hizo en Medialytic?",
