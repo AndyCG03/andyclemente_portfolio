@@ -16,8 +16,13 @@ app.use(express.json());
 // ============================================================
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta raíz explícita (opcional, pero buena práctica)
+// Ruta raíz
 app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Ruta para español
+app.get('/es', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
